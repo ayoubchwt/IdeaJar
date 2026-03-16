@@ -1,0 +1,154 @@
+@font-face {
+    font-family: "Beachday";
+    src:
+        local("Beachday"),
+        url("../assets/beachday/beachday.otf") format("opentype"),
+        url("../assets/beachday/beachday.ttf") format("truetype");
+    font-weight: normal;
+    font-size: normal;
+}
+:root {
+    --bg-dark: hsl(0 0 0);
+    --bg: hsl(0 0 9);
+    --bg-light: hsl(0 0 14);
+    --text: hsl(0 0 91);
+    --text-muted: hsl(0 0 66);
+    --primary-color: #d79b16;
+}
+:root.light {
+    --bg-dark: hsl(0 0 90);
+    --bg: hsl(0 0 95);
+    --bg-light: hsl(0 0 100);
+    --text: hsl(0 0 5);
+    --text-muted: hsl(0 0 30);
+    --primary-color: #d79b16;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    width: 600px;
+    height: 600px;
+}
+html {
+    font-size: 16px;
+}
+body {
+    background-color: var(--bg-dark);
+}
+/* --- Header --- */
+nav {
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+.logo img {
+    width: 2.7rem;
+}
+.logo-text {
+    font-family: Beachday;
+    font-size: 1.37rem;
+    color: var(--primary-color);
+}
+.settings {
+    padding-right: 0.3rem;
+    gap: 0.7rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.settings button {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 0.3rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+}
+.settings button i {
+    color: var(--text);
+    font-size: 1.4rem;
+}
+.settings button:hover {
+    background-color: var(--bg-light);
+}
+/* --- body --- */
+/* --- stats --- */
+.content-stats {
+    padding: 0 1.1rem 0 1.1rem;
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "prompt-number favorite-number"
+        "export-status export-status";
+}
+.prompt-number,
+.favorite-number,
+.export-status {
+    border: 2px solid var(--bg-light);
+    border-radius: 10px;
+    padding-right: 1.8rem;
+    padding-left: 1.8rem;
+}
+.prompt-number h1,
+.favorite-number h1,
+.export-status h1 {
+    color: var(--text);
+    font-size: 1.8rem;
+    padding-bottom: 0.4rem;
+}
+.prompt-number h2,
+.favorite-number h2,
+.export-status h2 {
+    font-size: 1.1rem;
+    color: var(--text);
+    padding-bottom: 0.3rem;
+}
+.prompt-number p,
+.favorite-number p,
+.export-status p {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+.prompt-number {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    background-color: var(--bg);
+    grid-area: prompt-number;
+    height: 8.4rem;
+}
+.favorite-number {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    background-color: var(--bg);
+    grid-area: favorite-number;
+    height: 8.4rem;
+}
+.export-status {
+    background-color: var(--bg);
+    grid-area: export-status;
+    height: 4.6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+/* --- stats --- */
+/* --- filters & actions --- */
