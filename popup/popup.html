@@ -20,6 +20,9 @@
                 <h1 class="logo-text">IdeaJar</h1>
             </section>
             <section class="settings">
+                <button type="button" id="toggle-stats">
+                    <i class="fa-solid fa-eye-low-vision"></i>
+                </button>
                 <button type="button">
                     <i class="fa-solid fa-circle-half-stroke"></i>
                 </button>
@@ -29,7 +32,7 @@
             </section>
         </nav>
         <main>
-            <section class="content-stats">
+            <section class="content-stats" id="content-stats">
                 <div class="prompt-number">
                     <h1>15</h1>
                     <h2>Prompts</h2>
@@ -71,7 +74,7 @@
                         </button>
                     </div>
                 </section>
-                <section class="prompts">
+                <section class="prompts" id="prompts">
                     <div class="prompt-card">
                         <h3>saved 2 hours ago</h3>
                         <h1>Explain Complex Topics Simply</h1>
@@ -166,4 +169,5 @@
             </section>
         </main>
     </body>
+    <script src="popup.js"></script>
 </html>
