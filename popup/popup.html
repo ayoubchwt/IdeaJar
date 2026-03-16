@@ -50,21 +50,23 @@
             </section>
             <section class="content">
                 <section class="filters">
-                    <input
-                        type="text"
-                        name="search"
-                        value="value"
-                        placeholder="Search for a prompt"
-                    />
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input
+                            type="text"
+                            name="search"
+                            placeholder="Search for a Prompt ..."
+                        />
+                    </div>
                     <div class="actions">
-                        <select name="filter">
-                            <option value="All">Show All</option>
-                            <option value="All">Only Favorite</option>
+                        <select class="favorite-filter">
+                            <option value="all">Show All</option>
+                            <option value="favorite">Only Favorite</option>
                         </select>
-                        <button type="button">
+                        <button type="button" class="add-button">
                             <i class="fa-solid fa-plus"></i>
                         </button>
-                        <button type="button">
+                        <button type="button" class="backup-button">
                             <i class="fa-solid fa-hard-drive"></i>
                         </button>
                     </div>
