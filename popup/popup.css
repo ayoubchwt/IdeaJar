@@ -92,11 +92,16 @@ nav {
 }
 /* --- main --- */
 main {
-    display: flex;
+    margin: 0;
+    padding: 0;
+}
+/* --- home --- */
+.home-page {
+    display: none;
     flex-direction: column;
     gap: 0.8rem;
 }
-.main-expanded {
+.home-page-expanded {
     gap: 0rem;
 }
 /* --- stats --- */
@@ -371,4 +376,12 @@ main {
 .favorite-button:hover {
     background-color: var(--text-muted);
     color: var(--bg);
+}
+/* --- add form --- */
+.add-form {
+    display: flex;
+}
+/* --- edit form --- */
+.edit-form {
+    display: none;
 }
