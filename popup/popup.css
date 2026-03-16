@@ -331,3 +331,9 @@ nav {
     cursor: pointer;
     border-radius: 10px;
 }
+.edit-button:hover,
+.delete-button:hover,
+.favorite-button:hover {
+    background-color: var(--text-muted);
+    color: var(--bg);
+}
