@@ -1,4 +1,5 @@
 @font-face {
+    /* logo font */
     font-family: "Beachday";
     src:
         local("Beachday"),
@@ -8,6 +9,7 @@
     font-size: normal;
 }
 :root {
+    /* dark palette */
     --bg-dark: hsl(0 0 0);
     --bg: hsl(0 0 5);
     --bg-light: hsl(0 0 14);
@@ -15,14 +17,20 @@
     --text-muted: hsl(0 0 66);
     --primary-color: #d79b16;
     --button-hover: all 0.4s ease;
+    --input-focus: border 0.4s ease;
+    --check: all 0.3s ease;
 }
 :root.light {
+    /* light palette */
     --bg-dark: hsl(0 0 90);
     --bg: hsl(0 0 95);
     --bg-light: hsl(0 0 100);
     --text: hsl(0 0 5);
     --text-muted: hsl(0 0 30);
     --primary-color: #d79b16;
+    --button-hover: all 0.4s ease;
+    --input-focus: border 0.4s ease;
+    --check: all 0.3s ease;
 }
 * {
     margin: 0;
@@ -295,7 +303,7 @@ main {
     gap: 1rem;
     overflow: auto;
     scrollbar-width: none;
-    transition: max-height 0.35s ease;
+    transition: max-height 0.35s ease; /* needs to be a variable*/
 }
 .prompts-expanded {
     max-height: 26rem;
@@ -377,11 +385,120 @@ main {
     background-color: var(--text-muted);
     color: var(--bg);
 }
-/* --- add form --- */
-.add-form {
+/* --- add page --- */
+.add-page {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
-/* --- edit form --- */
-.edit-form {
+.add-form {
+    width: 31rem;
+    height: 29rem;
+    background-color: var(--bg);
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0rem 0rem 0rem 2.4rem;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.add-form h1 {
+    font-size: 1.5rem;
+    color: var(--text);
+}
+.add-inputs-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.add-form-title,
+.add-form-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+}
+.add-form-title label,
+.add-form-body label,
+.add-form-checkbox label {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+.add-form-title input {
+    height: 2.8rem;
+    border-radius: 5px;
+    padding-left: 0.8rem;
+}
+.add-form-body textarea {
+    height: 8.5rem;
+    resize: none;
+    padding: 0.8rem;
+}
+.add-form-title input,
+.add-form-body textarea {
+    background-color: var(--bg-light);
+    border: none;
+    color: var(--text);
+    font-size: 0.8rem;
+    font-weight: 400;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid transparent;
+    width: 25.5rem;
+    transition: var(--input-focus);
+}
+.add-form-title input:focus,
+.add-form-body textarea:focus {
+    border-color: var(--text-muted);
+}
+.add-form-checkbox {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+.add-form-checkbox input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--bg-light);
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: var(--check);
+    cursor: pointer;
+}
+.add-form-checkbox input:checked {
+    background-color: var(--primary-color);
+}
+.add-form-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+.create-button,
+.cancel-button {
+    height: 1.9rem;
+    width: 6rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.create-button {
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--bg);
+}
+.cancel-button {
+    border: 1px solid var(--text-muted);
+    background-color: transparent;
+    color: var(--text-muted);
+}
+/* --- edit page --- */
+.edit-page {
     display: none;
 }

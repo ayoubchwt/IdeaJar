@@ -182,10 +182,45 @@
                     </section>
                 </section>
             </section>
-            <section class="add-form" id="add-form">
-                <h1 style="color: white">this is the add form</h1>
+            <section class="add-page" id="add-page">
+                <form class="add-form">
+                    <h1>Create Prompt</h1>
+                    <div class="add-inputs-container">
+                        <div class="add-form-title">
+                            <label for="title">Prompt Title</label>
+                            <input
+                                type="text"
+                                name="title"
+                                placeholder="e.g. Explain complex topics simply ..."
+                            />
+                        </div>
+                        <div class="add-form-body">
+                            <label for="body">Prompt Body</label>
+                            <textarea
+                                name="body"
+                                rows="12"
+                                cols="60"
+                                placeholder="e.g. Explain the following concept in simple terms using real-world examples"
+                            ></textarea>
+                        </div>
+                        <div class="add-form-checkbox">
+                            <input type="checkbox" name="favorite-checkbox" />
+                            <label for="favorite-checkbox"
+                                >Mark as favorite</label
+                            >
+                        </div>
+                    </div>
+                    <div class="add-form-buttons">
+                        <button type="button" class="create-button">
+                            Create
+                        </button>
+                        <button type="button" class="cancel-button">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
             </section>
-            <section class="edit-form" id="edit-form">
+            <section class="edit-page" id="edit-page">
                 <h1>this is the edit form</h1>
             </section>
         </main>
