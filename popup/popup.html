@@ -1,235 +1,224 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="./popup.css" />
-    </head>
-    <body>
-        <nav>
-            <section class="logo">
-                <img src="../assets/icons/logo48.png" alt="Logo" />
-                <h1 class="logo-text">IdeaJar</h1>
-            </section>
-            <section class="settings">
-                <button type="button" id="toggle-stats">
-                    <i class="fa-solid fa-eye-low-vision"></i>
-                </button>
-                <button type="button">
-                    <i class="fa-solid fa-circle-half-stroke"></i>
-                </button>
-                <button type="button">
-                    <i class="fa-brands fa-github"></i>
-                </button>
-            </section>
-        </nav>
-        <main>
-            <section class="home-page" id="home-page">
-                <section class="content-stats" id="content-stats">
-                    <div class="prompt-number">
-                        <h1>15</h1>
-                        <h2>Prompts</h2>
-                        <p>All prompts stored in your library</p>
-                    </div>
-                    <div class="favorite-number">
-                        <h1>4</h1>
-                        <h2>Favorite Prompts</h2>
-                        <p>Prompts marked as favorite</p>
-                    </div>
-                    <div class="export-status">
-                        <div class="info">
-                            <h2>Last Backup</h2>
-                            <p>Last prompt library export</p>
-                        </div>
-                        <h1>3/15/2026</h1>
-                    </div>
-                </section>
-                <section class="content">
-                    <section class="filters">
-                        <div class="search-box">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input
-                                type="text"
-                                name="search"
-                                placeholder="Search for a Prompt ..."
-                            />
-                        </div>
-                        <div class="actions">
-                            <select class="favorite-filter">
-                                <option value="all">Show All</option>
-                                <option value="favorite">Only Favorite</option>
-                            </select>
-                            <button
-                                type="button"
-                                class="add-button"
-                                id="add-button"
-                            >
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                            <button type="button" class="backup-button">
-                                <i class="fa-solid fa-hard-drive"></i>
-                            </button>
-                        </div>
-                    </section>
-                    <section class="prompts" id="prompts">
-                        <div class="prompt-card">
-                            <h3>saved 2 hours ago</h3>
-                            <h1>Explain Complex Topics Simply</h1>
-                            <p>
-                                Explain the following concept in a clear and
-                                structured way as if you were teaching someone
-                                with no prior knowledge of the subject. Start
-                                with a simple definition, then break the concept
-                                into smaller parts. Use real-world examples and
-                                analogies whenever possible. Avoid unnecessary
-                                technical jargon and keep the explanation easy
-                                to understand while still being accurate.
-                            </p>
-                            <div class="card-buttons">
-                                <button type="button" class="use-button">
-                                    Use
-                                </button>
-                                <div class="actions">
-                                    <button type="button" class="edit-button">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </button>
-                                    <button type="button" class="delete-button">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="favorite-button"
-                                    >
-                                        <i class="fa-solid fa-star"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="prompt-card">
-                            <h3>saved 2 hours ago</h3>
-                            <h1>Explain Complex Topics Simply</h1>
-                            <p>
-                                Explain the following concept in a clear and
-                                structured way as if you were teaching someone
-                                with no prior knowledge of the subject. Start
-                                with a simple definition, then break the concept
-                                into smaller parts. Use real-world examples and
-                                analogies whenever possible. Avoid unnecessary
-                                technical jargon and keep the explanation easy
-                                to understand while still being accurate.
-                            </p>
-                            <div class="card-buttons">
-                                <button type="button" class="use-button">
-                                    Use
-                                </button>
-                                <div class="actions">
-                                    <button type="button" class="edit-button">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </button>
-                                    <button type="button" class="delete-button">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="favorite-button"
-                                    >
-                                        <i class="fa-solid fa-star"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="prompt-card">
-                            <h3>saved 2 hours ago</h3>
-                            <h1>Explain Complex Topics Simply</h1>
-                            <p>
-                                Explain the following concept in a clear and
-                                structured way as if you were teaching someone
-                                with no prior knowledge of the subject. Start
-                                with a simple definition, then break the concept
-                                into smaller parts. Use real-world examples and
-                                analogies whenever possible. Avoid unnecessary
-                                technical jargon and keep the explanation easy
-                                to understand while still being accurate.
-                            </p>
-                            <div class="card-buttons">
-                                <button type="button" class="use-button">
-                                    Use
-                                </button>
-                                <div class="actions">
-                                    <button type="button" class="edit-button">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </button>
-                                    <button type="button" class="delete-button">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="favorite-button"
-                                    >
-                                        <i class="fa-solid fa-star"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </section>
-            </section>
-            <section class="add-page" id="add-page">
-                <form class="add-form">
-                    <h1>Create Prompt</h1>
-                    <div class="add-inputs-container">
-                        <div class="add-form-title">
-                            <label for="title">Prompt Title</label>
-                            <input
-                                type="text"
-                                name="title"
-                                placeholder="e.g. Explain complex topics simply ..."
-                            />
-                        </div>
-                        <div class="add-form-body">
-                            <label for="body">Prompt Body</label>
-                            <textarea
-                                name="body"
-                                rows="12"
-                                cols="60"
-                                placeholder="e.g. Explain the following concept in simple terms using real-world examples"
-                            ></textarea>
-                        </div>
-                        <div class="add-form-checkbox">
-                            <input type="checkbox" name="favorite-checkbox" />
-                            <label for="favorite-checkbox"
-                                >Mark as favorite</label
-                            >
-                        </div>
-                    </div>
-                    <div class="add-form-buttons">
-                        <button type="button" class="create-button">
-                            Create
-                        </button>
-                        <button type="button" class="cancel-button">
-                            Cancel
-                        </button>
-                    </div>
-                </form>
-            </section>
-            <section class="edit-page" id="edit-page">
-                <h1>this is the edit form</h1>
-            </section>
-        </main>
-    </body>
-    <script src="popup.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <nav>
+      <section class="logo">
+        <img src="../assets/icons/logo48.png" alt="Logo" />
+        <h1 class="logo-text">IdeaJar</h1>
+      </section>
+      <section class="settings">
+        <button type="button" id="toggle-stats">
+          <i class="fa-solid fa-eye-low-vision"></i>
+        </button>
+        <button type="button">
+          <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <button type="button">
+          <i class="fa-brands fa-github"></i>
+        </button>
+      </section>
+    </nav>
+    <main>
+      <section class="home-page" id="home-page">
+        <section class="content-stats" id="content-stats">
+          <div class="prompt-number">
+            <h1>15</h1>
+            <h2>Prompts</h2>
+            <p>All prompts stored in your library</p>
+          </div>
+          <div class="favorite-number">
+            <h1>4</h1>
+            <h2>Favorite Prompts</h2>
+            <p>Prompts marked as favorite</p>
+          </div>
+          <div class="export-status">
+            <div class="info">
+              <h2>Last Backup</h2>
+              <p>Last prompt library export</p>
+            </div>
+            <h1>3/15/2026</h1>
+          </div>
+        </section>
+        <section class="content">
+          <section class="filters">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                name="search"
+                placeholder="Search for a Prompt ..."
+              />
+            </div>
+            <div class="actions">
+              <select class="favorite-filter">
+                <option value="all">Show All</option>
+                <option value="favorite">Only Favorite</option>
+              </select>
+              <button type="button" class="add-button" id="add-button">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+              <button type="button" class="backup-button">
+                <i class="fa-solid fa-hard-drive"></i>
+              </button>
+            </div>
+          </section>
+          <section class="prompts" id="prompts">
+            <div class="prompt-card">
+              <h3>saved 2 hours ago</h3>
+              <h1>Explain Complex Topics Simply</h1>
+              <p>
+                Explain the following concept in a clear and structured way as
+                if you were teaching someone with no prior knowledge of the
+                subject. Start with a simple definition, then break the concept
+                into smaller parts. Use real-world examples and analogies
+                whenever possible. Avoid unnecessary technical jargon and keep
+                the explanation easy to understand while still being accurate.
+              </p>
+              <div class="card-buttons">
+                <button type="button" class="use-button">Use</button>
+                <div class="actions">
+                  <button type="button" class="edit-button">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <button type="button" class="delete-button">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                  <button type="button" class="favorite-button">
+                    <i class="fa-solid fa-star"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="prompt-card">
+              <h3>saved 2 hours ago</h3>
+              <h1>Explain Complex Topics Simply</h1>
+              <p>
+                Explain the following concept in a clear and structured way as
+                if you were teaching someone with no prior knowledge of the
+                subject. Start with a simple definition, then break the concept
+                into smaller parts. Use real-world examples and analogies
+                whenever possible. Avoid unnecessary technical jargon and keep
+                the explanation easy to understand while still being accurate.
+              </p>
+              <div class="card-buttons">
+                <button type="button" class="use-button">Use</button>
+                <div class="actions">
+                  <button type="button" class="edit-button">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <button type="button" class="delete-button">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                  <button type="button" class="favorite-button">
+                    <i class="fa-solid fa-star"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="prompt-card">
+              <h3>saved 2 hours ago</h3>
+              <h1>Explain Complex Topics Simply</h1>
+              <p>
+                Explain the following concept in a clear and structured way as
+                if you were teaching someone with no prior knowledge of the
+                subject. Start with a simple definition, then break the concept
+                into smaller parts. Use real-world examples and analogies
+                whenever possible. Avoid unnecessary technical jargon and keep
+                the explanation easy to understand while still being accurate.
+              </p>
+              <div class="card-buttons">
+                <button type="button" class="use-button">Use</button>
+                <div class="actions">
+                  <button type="button" class="edit-button">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <button type="button" class="delete-button">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                  <button type="button" class="favorite-button">
+                    <i class="fa-solid fa-star"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </section>
+      <section class="add-page" id="add-page">
+        <form class="add-form">
+          <h1>Create Prompt</h1>
+          <div class="add-inputs-container">
+            <div class="add-form-title">
+              <label for="title">Prompt Title</label>
+              <input
+                type="text"
+                name="title"
+                placeholder="e.g. Explain complex topics simply ..."
+              />
+            </div>
+            <div class="add-form-body">
+              <label for="body">Prompt Body</label>
+              <textarea
+                name="body"
+                rows="12"
+                cols="60"
+                placeholder="e.g. Explain the following concept in simple terms using real-world examples"
+              ></textarea>
+            </div>
+            <div class="add-form-checkbox">
+              <input type="checkbox" name="favorite-checkbox" />
+              <label for="favorite-checkbox">Mark as favorite</label>
+            </div>
+          </div>
+          <div class="add-form-buttons">
+            <button type="button" class="create-button">Create</button>
+            <button type="button" class="cancel-button">Cancel</button>
+          </div>
+        </form>
+      </section>
+      <section class="edit-page" id="edit-page">
+        <form class="edit-form">
+          <h1>Edit Prompt</h1>
+          <div class="edit-inputs-container">
+            <div class="edit-form-title">
+              <label for="title">Prompt Title</label>
+              <input type="text" name="title" />
+            </div>
+            <div class="edit-form-body">
+              <label for="body">Prompt Body</label>
+              <textarea name="body" rows="12" cols="60"></textarea>
+            </div>
+            <div class="edit-form-checkbox">
+              <input type="checkbox" name="favorite-checkbox" />
+              <label for="favorite-checkbox">Mark as favorite</label>
+            </div>
+          </div>
+          <div class="edit-form-buttons">
+            <button type="button" class="save-button">Save</button>
+            <button type="button" class="cancel-button">Cancel</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+  <script src="popup.js"></script>
 </html>
