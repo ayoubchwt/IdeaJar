@@ -8,6 +8,70 @@
     font-weight: normal;
     font-size: normal;
 }
+/* primary font */
+@font-face {
+    font-family: "SFNSDisplay";
+    src: url("./assets/SanFrancisco/otf/SFNSDisplay-Ultralight.otf")
+        format("opentype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SFNSDisplay";
+    src: url("./assets/SanFrancisco/otf/SFNSDisplay-Thin.otf")
+        format("opentype");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SFNSDisplay";
+    src: url("./assets/SanFrancisco/otf/SFNSDisplay-Light.otf")
+        format("opentype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SFNSDisplay";
+    src: url("./assets/SanFrancisco/otf/SFNSDisplay-Regular.otf")
+        format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SFNSDisplay";
+    src: url("./assets/SanFrancisco/otf/SFNSDisplay-Medium.otf")
+        format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SFNSDisplay";
+    src: url("./assets/SanFrancisco/otf/SFNSDisplay-Semibold.otf")
+        format("opentype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SFNSDisplay";
+    src: url("./assets/SanFrancisco/otf/SFNSDisplay-Bold.otf")
+        format("opentype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SFNSDisplay";
+    src: url("./assets/SanFrancisco/otf/SFNSDisplay-Heavy.otf")
+        format("opentype");
+    font-weight: 800;
+    font-style: normal;
+}
 :root {
     /* dark palette */
     --bg-dark: hsl(0 0 0);
@@ -42,6 +106,7 @@ body {
     width: 600px;
     height: 600px;
     overflow: hidden;
+    font-family: "SFNSDisplay", sans-serif;
 }
 html {
     font-size: 18px;
@@ -105,7 +170,7 @@ main {
 }
 /* --- home --- */
 .home-page {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 0.8rem;
 }
@@ -155,6 +220,7 @@ main {
 .favorite-number p,
 .export-status p {
     font-size: 0.7rem;
+    letter-spacing: 0.4px;
     color: var(--text-muted);
 }
 .prompt-number {
@@ -339,6 +405,8 @@ main {
     color: var(--text-muted);
     font-size: 0.7rem;
     padding-bottom: 0.5rem;
+    letter-spacing: 0.4px;
+    line-height: 18px;
 }
 .card-buttons {
     display: flex;
@@ -387,7 +455,7 @@ main {
 }
 /* --- add page --- */
 .add-page {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
