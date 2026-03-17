@@ -8,6 +8,7 @@ const saveButton = document.getElementById("save-button");
 // components
 const Stats = document.getElementById("content-stats");
 const prompts = document.getElementById("prompts");
+const promptParagraph = document.getElementById("paragraph");
 const addFrom = document.getElementById("add-form");
 const editForm = document.getElementById("edit-form");
 // pages
@@ -35,6 +36,7 @@ ToggleStatsButton.addEventListener("click", () => {
   Stats.classList.toggle("hidden");
   homePage.classList.toggle("home-page-expanded");
   prompts.classList.toggle("prompts-expanded");
+  promptParagraph.classList.toggle("paragraph-expanded");
 });
 addButton.addEventListener("click", () => {
   navigateToAdd();
