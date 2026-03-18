@@ -172,6 +172,7 @@
             <div class="add-form-title">
               <label for="title">Prompt Title</label>
               <input
+                id="add-form-title-input"
                 type="text"
                 name="title"
                 placeholder="e.g. Explain complex topics simply ..."
@@ -180,6 +181,7 @@
             <div class="add-form-body">
               <label for="body">Prompt Body</label>
               <textarea
+                id="add-form-body-input"
                 name="body"
                 rows="12"
                 cols="60"
@@ -187,7 +189,11 @@
               ></textarea>
             </div>
             <div class="add-form-checkbox">
-              <input type="checkbox" name="favorite-checkbox" />
+              <input
+                id="add-form-favorite-input"
+                type="checkbox"
+                name="favorite-checkbox"
+              />
               <label for="favorite-checkbox">Mark as favorite</label>
             </div>
           </div>
@@ -226,5 +232,5 @@
       </section>
     </main>
   </body>
-  <script src="popup.js"></script>
+  <script type="module" src="popup.js"></script>
 </html>
