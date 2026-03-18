@@ -55,6 +55,10 @@ body {
   flex-direction: column;
   gap: 0.1rem;
 }
+/* we added this class to the body in order to disable all the animations at opening */
+.preload * {
+  transition: none !important;
+}
 /* --- Header --- */
 nav {
   padding: 0.4rem 0.7rem 0.2rem 0.6rem;
@@ -326,6 +330,7 @@ main {
   align-items: start;
   gap: 0.2rem;
   border-radius: 10px;
+  flex-shrink: 0;
 }
 .prompt-card h3 {
   width: 100%;
@@ -350,10 +355,10 @@ main {
   text-wrap: nowrap;
   text-overflow: ellipsis;
 }
-.prompt-card p {
+.paragraph {
   width: 100%;
   color: var(--text-muted);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   letter-spacing: 0.4px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -365,7 +370,7 @@ main {
   max-height: 15rem;
   transition: var(--expansion);
 }
-.prompt-card p.paragraph-expanded {
+.paragraph-expanded {
   display: block;
   max-height: 50rem;
   overflow: visible;

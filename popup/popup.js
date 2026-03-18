@@ -6,9 +6,9 @@ const cancelButtons = document.querySelectorAll(".cancel-button");
 const createButton = document.getElementById("create-button");
 const saveButton = document.getElementById("save-button");
 // components
-const Stats = document.getElementById("content-stats");
+const stats = document.getElementById("content-stats");
 const prompts = document.getElementById("prompts");
-const promptParagraph = document.getElementById("paragraph");
+const promptParagraphs = document.querySelectorAll(".paragraph");
 const addFrom = document.getElementById("add-form");
 const editForm = document.getElementById("edit-form");
 // pages
@@ -31,12 +31,35 @@ const navigateToAdd = () => {
   homePage.style.display = "none";
   addPage.style.display = "flex";
 };
+// saving toggle status
+const saveToggleStatus = () => {
+  const isHidden = stats.classList.contains("hidden");
+  localStorage.setItem("IdeaJar_Stats_Hidden", isHidden);
+};
 // events handling
+document.addEventListener("DOMContentLoaded", () => {
+  const isHidden = localStorage.getItem("IdeaJar_Stats_Hidden");
+  if (isHidden === "true") {
+    stats.classList.add("hidden");
+    homePage.classList.add("home-page-expanded");
+    prompts.classList.add("prompts-expanded");
+    promptParagraphs.forEach((paragraph) => {
+      paragraph.classList.add("paragraph-expanded");
+    });
+  }
+  // enabling animation after everything loads
+  setTimeout(() => {
+    document.body.classList.remove("preload");
+  }, 50);
+});
 ToggleStatsButton.addEventListener("click", () => {
-  Stats.classList.toggle("hidden");
+  stats.classList.toggle("hidden");
+  saveToggleStatus();
   homePage.classList.toggle("home-page-expanded");
   prompts.classList.toggle("prompts-expanded");
-  promptParagraph.classList.toggle("paragraph-expanded");
+  promptParagraphs.forEach((paragraph) => {
+    paragraph.classList.toggle("paragraph-expanded");
+  });
 });
 addButton.addEventListener("click", () => {
   navigateToAdd();
