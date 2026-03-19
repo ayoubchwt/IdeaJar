@@ -127,7 +127,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "prompt-number favorite-number"
+    "idea-number favorite-number"
     "export-status export-status";
   overflow: hidden;
   transition: var(--expansion);
@@ -136,7 +136,7 @@ main {
   max-height: 0;
   padding: 0 1.1rem 0 1.1rem;
 }
-.prompt-number,
+.idea-number,
 .favorite-number,
 .export-status {
   border: 2px solid var(--bg-light);
@@ -144,34 +144,34 @@ main {
   padding-right: 1.8rem;
   padding-left: 1.8rem;
 }
-.prompt-number h1,
+.idea-number h1,
 .favorite-number h1,
 .export-status h1 {
   color: var(--text);
   font-size: 1.5rem;
   padding-bottom: 0.4rem;
 }
-.prompt-number h2,
+.idea-number h2,
 .favorite-number h2,
 .export-status h2 {
   font-size: 1.1rem;
   color: var(--text);
   padding-bottom: 0.3rem;
 }
-.prompt-number p,
+.idea-number p,
 .favorite-number p,
 .export-status p {
   font-size: 0.7rem;
   letter-spacing: 0.4px;
   color: var(--text-muted);
 }
-.prompt-number {
+.idea-number {
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
   background-color: var(--bg);
-  grid-area: prompt-number;
+  grid-area: idea-number;
   height: 7rem;
 }
 .favorite-number {
@@ -303,8 +303,8 @@ main {
 .backup-button:hover {
   background-color: var(--bg-light);
 }
-/* --- prompts --- */
-.prompts {
+/* --- ideas --- */
+.ideas {
   max-height: 13rem;
   display: flex;
   flex-direction: column;
@@ -313,13 +313,13 @@ main {
   scrollbar-width: none;
   transition: var(--expansion); /* needs to be a variable*/
 }
-.prompts-expanded {
+.ideas-expanded {
   max-height: 26rem;
 }
-.prompts:-webkit-scrollbar {
+.ideas:-webkit-scrollbar {
   display: none;
 }
-.prompt-card {
+.idea-card {
   background-color: var(--bg);
   padding: 0.8rem 1.1rem 0.8rem 1.1rem;
   min-height: 13rem;
@@ -332,14 +332,14 @@ main {
   border-radius: 10px;
   flex-shrink: 0;
 }
-.prompt-card h3 {
+.idea-card h3 {
   width: 100%;
   text-align: end;
   color: var(--text-muted);
   font-weight: 300;
   font-size: 0.7rem;
 }
-.prompt-container {
+.idea-container {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -347,7 +347,7 @@ main {
   min-height: 8rem;
   width: 100%;
 }
-.prompt-card h1 {
+.idea-card h1 {
   width: 100%;
   color: var(--text);
   font-size: 1.1rem;

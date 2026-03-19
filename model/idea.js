@@ -1,4 +1,4 @@
-export class Prompt {
+export class Idea {
   title; // for the sake of my ocd
   body; // for the sake of my ocd
   isFavourite; // for the sake of my ocd

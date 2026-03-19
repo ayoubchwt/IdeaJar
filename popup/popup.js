@@ -1,6 +1,6 @@
-import * as promptService from "../service/PromptService.js";
-import { Prompt } from "../model/prompts.js";
-import { renderPromptList } from "../utils/renderers.js";
+import * as ideaService from "../service/IdeaService.js";
+import { Idea } from "../model/Idea.js";
+import { renderIdeaList } from "../utils/renderers.js";
 // buttons
 const ToggleStatsButton = document.getElementById("toggle-stats");
 const addButton = document.getElementById("add-button");
@@ -13,7 +13,7 @@ const addFormBody = document.getElementById("add-form-body-input");
 const addFormFavorite = document.getElementById("add-form-favorite-input");
 // components
 const stats = document.getElementById("content-stats");
-const prompts = document.getElementById("prompts");
+const ideas = document.getElementById("ideas");
 const addFrom = document.getElementById("add-form");
 const editForm = document.getElementById("edit-form");
 // pages
@@ -37,7 +37,7 @@ const navigateToAdd = () => {
   addPage.style.display = "flex";
 };
 // states
-let promptState = "";
+let ideaState = "";
 // saving toggle status
 const saveToggleStatus = () => {
   const isHidden = stats.classList.contains("hidden");
@@ -45,21 +45,21 @@ const saveToggleStatus = () => {
 };
 // validators (later on)
 const validateInputs = () => {};
-// refreshing prompts
-const refreshPrompts = async () => {
-  const list = await promptService.getAll();
-  renderPromptList(prompts, list);
+// refreshing ideas
+const refreshIdeas = async () => {
+  const list = await ideaService.getAll();
+  renderIdeaList(ideas, list);
 };
 // events handling
 document.addEventListener("DOMContentLoaded", async () => {
-  await refreshPrompts();
+  await refreshIdeas();
   const isHidden = localStorage.getItem("IdeaJar_Stats_Hidden");
   if (isHidden === "true") {
     stats.classList.add("hidden");
     homePage.classList.add("home-page-expanded");
-    prompts.classList.add("prompts-expanded");
-    const promptParagraphs = document.querySelectorAll(".paragraph"); // putted this here cuz the new paragaphs are not getting detected
-    promptParagraphs.forEach((paragraph) => {
+    ideas.classList.add("ideas-expanded");
+    const ideaParagraphs = document.querySelectorAll(".paragraph"); // putted this here cuz the new paragaphs are not getting detected
+    ideaParagraphs.forEach((paragraph) => {
       paragraph.classList.add("paragraph-expanded");
     });
   }
@@ -72,9 +72,9 @@ ToggleStatsButton.addEventListener("click", () => {
   stats.classList.toggle("hidden");
   saveToggleStatus();
   homePage.classList.toggle("home-page-expanded");
-  prompts.classList.toggle("prompts-expanded");
-  const promptParagraphs = document.querySelectorAll(".paragraph"); // putted this here cuz the new paragaphs are not getting detected
-  promptParagraphs.forEach((paragraph) => {
+  ideas.classList.toggle("ideas-expanded");
+  const ideaParagraphs = document.querySelectorAll(".paragraph"); // putted this here cuz the new paragaphs are not getting detected
+  ideaParagraphs.forEach((paragraph) => {
     paragraph.classList.toggle("paragraph-expanded");
   });
 });
@@ -82,17 +82,17 @@ addButton.addEventListener("click", () => {
   navigateToAdd();
 });
 // delete and update
-prompts.addEventListener("click", (e) => {
+ideas.addEventListener("click", (e) => {
   const editButton = e.target.closest(".edit-button");
   if (editButton) {
-    promptState = editButton.id;
-    console.log("id to edit: ", promptState);
+    ideaState = editButton.id;
+    console.log("id to edit: ", ideaState);
     navigateToEdit();
   }
   const deleteButton = e.target.closest(".delete-button");
   if (deleteButton) {
-    promptState = deleteButton.id;
-    console.log("id to delete: ", promptState);
+    ideaState = deleteButton.id;
+    console.log("id to delete: ", ideaState);
   }
 });
 cancelButtons.forEach((button) => {
@@ -103,13 +103,13 @@ cancelButtons.forEach((button) => {
 // create
 createButton.addEventListener("click", async (e) => {
   e.preventDefault();
-  const prompt = new Prompt(
+  const idea = new Idea(
     addFormTitle.value,
     addFormBody.value,
     addFormFavorite.checked,
   );
-  await promptService.add(prompt);
-  await refreshPrompts();
+  await ideaService.add(idea);
+  await refreshIdeas();
   navigateToHome();
 });
 saveButton.addEventListener("click", () => {
