@@ -4,6 +4,7 @@ export class Prompt {
   isFavourite; // for the sake of my ocd
   id = Date.now().toString();
   createdAt = new Date().toISOString();
+  updatedAt = this.createdAt;
   constructor(title, body, isFavourite = false) {
     this.title = title;
     this.body = body;
