@@ -313,6 +313,14 @@ main {
   scrollbar-width: none;
   transition: var(--expansion); /* needs to be a variable*/
 }
+.empty-error {
+  color: var(--text);
+  width: 100%;
+  text-align: center;
+  padding-top: 3rem;
+  min-height: 5rem;
+  letter-spacing: 0.4px;
+}
 .ideas-expanded {
   max-height: 26rem;
 }

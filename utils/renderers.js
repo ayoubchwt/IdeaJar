@@ -28,8 +28,7 @@ const renderIdea = (idea) => {
 export const renderIdeaList = (ideas, list) => {
   ideas.innerHTML = "";
   if (list.length === 0) {
-    const card = renderIdea()
-    ideas.appendChild()
+    ideas.innerHTML = `<p class="empty-error"> No ideas saved yet. Add one </p>`;
     return;
   }
   list.forEach((idea) => {

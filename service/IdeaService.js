@@ -3,10 +3,10 @@ export const getAll = async () => {
   const result = await chrome.storage.local.get(STORAGE_KEY);
   return result[STORAGE_KEY] || [];
 };
-export const getById = async () => {
-  const result = await chrome.storage.local.get(STORAGE_KEY);
-  idea;
-  return result[STORAGE_KEY] || [];
+export const getById = async (id) => {
+  const ideas = await getAll();
+  const idea = ideas.find((idea) => idea.id === id);
+  return idea || null;
 };
 export const add = async (idea) => {
   const ideas = await getAll(idea);

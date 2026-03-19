@@ -11,6 +11,10 @@ const saveButton = document.getElementById("save-button");
 const addFormTitle = document.getElementById("add-form-title-input");
 const addFormBody = document.getElementById("add-form-body-input");
 const addFormFavorite = document.getElementById("add-form-favorite-input");
+
+const editFormTitle = document.getElementById("edit-form-title-input");
+const editFormBody = document.getElementById("edit-form-body-input");
+const editFormFavorite = document.getElementById("edit-form-favorite-input");
 // components
 const stats = document.getElementById("content-stats");
 const ideas = document.getElementById("ideas");
@@ -82,17 +86,21 @@ addButton.addEventListener("click", () => {
   navigateToAdd();
 });
 // delete and update
-ideas.addEventListener("click", (e) => {
+ideas.addEventListener("click", async (e) => {
   const editButton = e.target.closest(".edit-button");
   if (editButton) {
-    ideaState = editButton.id;
-    console.log("id to edit: ", ideaState);
+    ideaState = await ideaService.getById(editButton.id);
+    console.log(ideaState);
+    editFormTitle.value = ideaState.title;
+    editFormBody.value = ideaState.body;
+    editFormFavorite.checked = ideaState.isFavourite;
     navigateToEdit();
   }
   const deleteButton = e.target.closest(".delete-button");
   if (deleteButton) {
-    ideaState = deleteButton.id;
-    console.log("id to delete: ", ideaState);
+    ideaState = await ideaService.getById(deleteButton.id);
+    await ideaService.remove(ideaState);
+    await refreshIdeas();
   }
 });
 cancelButtons.forEach((button) => {
@@ -112,7 +120,11 @@ createButton.addEventListener("click", async (e) => {
   await refreshIdeas();
   navigateToHome();
 });
-saveButton.addEventListener("click", () => {
-  // editing logic will be done here
+saveButton.addEventListener("click", async () => {
+  ideaState.title = editFormTitle.value;
+  ideaState.body = editFormBody.value;
+  ideaState.isFavourite = editFormFavorite.checked;
+  await ideaService.update(ideaState);
+  refreshIdeas();
   navigateToHome();
 });
