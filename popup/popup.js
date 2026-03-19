@@ -7,6 +7,8 @@ const addButton = document.getElementById("add-button");
 const cancelButtons = document.querySelectorAll(".cancel-button");
 const createButton = document.getElementById("create-button");
 const saveButton = document.getElementById("save-button");
+const confirmActionButton = document.getElementById("confirm-action");
+const cancelActionButton = document.getElementById("cancel-action");
 // inputs
 const addFormTitle = document.getElementById("add-form-title-input");
 const addFormBody = document.getElementById("add-form-body-input");
@@ -20,6 +22,7 @@ const stats = document.getElementById("content-stats");
 const ideas = document.getElementById("ideas");
 const addFrom = document.getElementById("add-form");
 const editForm = document.getElementById("edit-form");
+const modal = document.getElementById("confirm-modal");
 // pages
 const homePage = document.getElementById("home-page");
 const addPage = document.getElementById("add-page");
@@ -54,6 +57,22 @@ const refreshIdeas = async () => {
   const list = await ideaService.getAll();
   renderIdeaList(ideas, list);
 };
+// confirmation
+const showConfirm = (message) => {
+  modal.querySelector("p").innerText = message;
+  modal.style.display = "flex";
+
+  return new Promise((resolve) => {
+    confirmActionButton.onclick = () => {
+      modal.style.display = "none";
+      resolve(true);
+    };
+    cancelActionButton.onclick = () => {
+      modal.style.display = "none";
+      resolve(false);
+    };
+  });
+};
 // events handling
 document.addEventListener("DOMContentLoaded", async () => {
   await refreshIdeas();
@@ -72,6 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.body.classList.remove("preload");
   }, 50);
 });
+
 ToggleStatsButton.addEventListener("click", () => {
   stats.classList.toggle("hidden");
   saveToggleStatus();
@@ -82,15 +102,22 @@ ToggleStatsButton.addEventListener("click", () => {
     paragraph.classList.toggle("paragraph-expanded");
   });
 });
+
 addButton.addEventListener("click", () => {
   navigateToAdd();
 });
-// delete and update
+
+cancelButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    navigateToHome();
+  });
+});
+
+// card actions
 ideas.addEventListener("click", async (e) => {
   const editButton = e.target.closest(".edit-button");
   if (editButton) {
     ideaState = await ideaService.getById(editButton.id);
-    console.log(ideaState);
     editFormTitle.value = ideaState.title;
     editFormBody.value = ideaState.body;
     editFormFavorite.checked = ideaState.isFavourite;
@@ -99,15 +126,23 @@ ideas.addEventListener("click", async (e) => {
   const deleteButton = e.target.closest(".delete-button");
   if (deleteButton) {
     ideaState = await ideaService.getById(deleteButton.id);
-    await ideaService.remove(ideaState);
-    await refreshIdeas();
+    const confirmed = await showConfirm(
+      "Are you sure you want to delete this idea?",
+    );
+    if (confirmed) {
+      await ideaService.remove(ideaState);
+      await refreshIdeas();
+    }
+  }
+  const favoriteButton = e.target.closest(".favorite-button");
+  if (favoriteButton) {
+    ideaState = await ideaService.getById(favoriteButton.id);
+    ideaState.isFavourite = !ideaState.isFavourite;
+    await ideaService.update(ideaState);
+    refreshIdeas();
   }
 });
-cancelButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    navigateToHome();
-  });
-});
+
 // create
 createButton.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -120,11 +155,17 @@ createButton.addEventListener("click", async (e) => {
   await refreshIdeas();
   navigateToHome();
 });
+// "save"
 saveButton.addEventListener("click", async () => {
   ideaState.title = editFormTitle.value;
   ideaState.body = editFormBody.value;
   ideaState.isFavourite = editFormFavorite.checked;
-  await ideaService.update(ideaState);
-  refreshIdeas();
-  navigateToHome();
+  const confirmed = await showConfirm(
+    "Are you sure you want to update this idea?",
+  );
+  if (confirmed) {
+    await ideaService.update(ideaState);
+    refreshIdeas();
+    navigateToHome();
+  }
 });

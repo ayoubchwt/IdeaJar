@@ -66,12 +66,13 @@
                 type="text"
                 name="search"
                 placeholder="Search for an Idea ..."
+                autocomplete="off"
               />
             </div>
             <div class="actions">
               <select class="favorite-filter">
                 <option value="all">Show All</option>
-                <option value="favorite">Only Favorite</option>
+                <option value="favorite">Favorite</option>
               </select>
               <button type="button" class="add-button" id="add-button">
                 <i class="fa-solid fa-plus"></i>
@@ -150,6 +151,16 @@
             <button type="button" class="cancel-button">Cancel</button>
           </div>
         </form>
+      </section>
+      <section class="confirm-modal" id="confirm-modal">
+          <div class="modal-content">
+              <h3>Are you sure ?</h3>
+              <p>This action cannot be undone</p>
+              <div class = "modal-buttons">
+                  <button type="button" class="confirm-button" id="confirm-action">Confirm</button>
+                  <button type="button" class="cancel-button" id="cancel-action">Cancel</button>
+              </div>
+          </div>
       </section>
     </main>
   </body>

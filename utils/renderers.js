@@ -17,7 +17,7 @@ const renderIdea = (idea) => {
         <button type="button" class="delete-button" id="${idea.id}">
           <i class="fa-solid fa-trash"></i>
         </button>
-        <button type="button" class="favorite-button">
+        <button type="button" class="favorite-button" id="${idea.id}">
         ${idea.isFavourite ? '<i class="fa-solid fa-star"></i>' : ' <i class="fa-regular fa-star"></i>'}  
         </button>
       </div>

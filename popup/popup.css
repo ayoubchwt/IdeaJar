@@ -545,7 +545,8 @@ main {
 }
 .create-button,
 .save-button,
-.cancel-button {
+.cancel-button,
+.confirm-button {
   height: 2rem;
   width: 6.5rem;
   border-radius: 8px;
@@ -555,7 +556,8 @@ main {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .create-button,
-.save-button {
+.save-button,
+.confirm-button {
   border: 1px solid var(--primary-color);
   background-color: var(--primary-color);
   color: var(--bg);
@@ -569,7 +571,8 @@ main {
   transition: var(--button-hover);
 }
 .create-button:hover,
-.save-button:hover {
+.save-button:hover,
+.confirm-button:hover {
   background-color: var(--hover-color);
   border-color: var(--hover-color);
 }
@@ -578,6 +581,46 @@ main {
 }
 .create-button:active,
 .save-button:active,
-.cancel-button:active {
+.cancel-button:active,
+.confirm-button:active {
   transform: scale(0.97);
+}
+/* --- confirm modal --- */
+.confirm-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  width: 20rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  align-items: center;
+  background-color: var(--bg);
+  border: 2px solid var(--bg-light);
+  border-radius: 10px;
+}
+.modal-content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.modal-content p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.modal-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
