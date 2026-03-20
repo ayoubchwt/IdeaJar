@@ -167,8 +167,23 @@ ideas.addEventListener("click", async (e) => {
     await ideaService.update(ideaState);
     refreshIdeas();
   }
+  const useButton = e.target.closest(".use-button");
+  if (useButton) {
+    //console.log("use button id : ", useButton.id);
+    ideaState = await ideaService.getById(useButton.id);
+    const [tab] = await chrome.tabs.query({
+      active: true,
+      currentWindow: true,
+    });
+    if (tab && tab.id) {
+      chrome.tabs.sendMessage(tab.id, {
+        action: "inject-idea",
+        text: ideaState.body,
+      });
+      window.close();
+    }
+  }
 });
-
 // create
 createButton.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -190,7 +205,6 @@ createButton.addEventListener("click", async (e) => {
     }
   }
 });
-
 // save
 saveButton.addEventListener("click", async (e) => {
   e.preventDefault();

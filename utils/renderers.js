@@ -14,7 +14,7 @@ const renderIdea = (idea, searchInput = "") => {
       <p class="paragraph">${highlightText(idea.body, searchInput)}</p>
     </div>
     <div class="card-buttons">
-      <button type="button" class="use-button">Use</button>
+      <button type="button" class="use-button" id="${idea.id}">Use</button>
       <div class="card-actions">
         <button type="button" class="edit-button" id="${idea.id}">
           <i class="fa-solid fa-pen"></i>
