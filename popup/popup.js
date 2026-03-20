@@ -21,7 +21,6 @@ const editFormBody = document.getElementById("edit-form-body-input");
 const editFormFavorite = document.getElementById("edit-form-favorite-input");
 
 const searchInput = document.getElementById("search-input");
-const favoriteInput = document.getElementById("");
 // errors
 const addTitleError = document.getElementById("add-title-error");
 const addBodyError = document.getElementById("add-body-error");
@@ -77,6 +76,12 @@ const refreshIdeas = async () => {
   const allIdeas = await ideaService.getAll();
   const list = searchUtils.search(allIdeas, searchInput.value);
   renderIdeaList(ideas, list, searchInput.value);
+  if (stats.classList.contains("hidden")) {
+    const ideaParagraphs = document.querySelectorAll(".paragraph");
+    ideaParagraphs.forEach((paragraph) => {
+      paragraph.classList.add("paragraph-expanded");
+    });
+  }
 };
 // confirmation
 const showConfirm = (message) => {
