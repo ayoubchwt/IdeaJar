@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>IdeaJar</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -82,33 +82,45 @@
               </button>
             </div>
           </section>
-          <section class="ideas" id="ideas">
-            </div>
-          </section>
+          <section class="ideas" id="ideas"></section>
         </section>
       </section>
-      <section class="add-page" id="add-page">
+
+      <section class="add-page" id="add-page" style="display: none">
         <form class="add-form" id="add-form">
           <h1>Create Idea</h1>
           <div class="add-inputs-container">
             <div class="add-form-title">
               <label for="title">Idea Title</label>
-              <input
-                id="add-form-title-input"
-                type="text"
-                name="title"
-                placeholder="e.g. Weekly Status Update"
-              />
+              <div class="input-wrapper">
+                <input
+                  id="add-form-title-input"
+                  type="text"
+                  name="title"
+                  maxlength="55"
+                  placeholder="e.g. Weekly Status Update"
+                />
+                <p class="add-title-error" id="add-title-error">
+                  Please enter at least one word :))
+                </p>
+              </div>
             </div>
+
             <div class="add-form-body">
               <label for="body">Idea Body</label>
-              <textarea
-                id="add-form-body-input"
-                name="body"
-                rows="12"
-                cols="60"
-                placeholder="Describe your idea, prompt, or template here..."
-              ></textarea>
+              <div class="input-wrapper">
+                <textarea
+                  id="add-form-body-input"
+                  name="body"
+                  rows="12"
+                  cols="60"
+                  maxlength="5000"
+                  placeholder="Describe your idea, prompt, or template here..."
+                ></textarea>
+                <p class="add-body-error" id="add-body-error">
+                  Come on, this can't be the only thing you got in mind :))
+                </p>
+              </div>
             </div>
             <div class="add-form-checkbox">
               <input
@@ -127,20 +139,45 @@
           </div>
         </form>
       </section>
-      <section class="edit-page" id="edit-page">
+      <section class="edit-page" id="edit-page" style="display: none">
         <form class="edit-form" id="edit-form">
           <h1>Edit Idea</h1>
           <div class="edit-inputs-container">
             <div class="edit-form-title">
               <label for="title">Idea Title</label>
-              <input type="text" name="title" id="edit-form-title-input"/>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="title"
+                  id="edit-form-title-input"
+                  maxlength="55"
+                />
+                <p class="edit-title-error" id="edit-title-error">
+                  Please enter at least one word :))
+                </p>
+              </div>
             </div>
             <div class="edit-form-body">
               <label for="body">Idea Body</label>
-              <textarea name="body" rows="12" cols="60" id="edit-form-body-input"></textarea>
+              <div class="input-wrapper">
+                <textarea
+                  name="body"
+                  rows="12"
+                  cols="60"
+                  id="edit-form-body-input"
+                  maxlength="5000"
+                ></textarea>
+                <p class="edit-body-error" id="edit-body-error">
+                  Come on, this can't be the only thing you got in mind :))
+                </p>
+              </div>
             </div>
             <div class="edit-form-checkbox">
-              <input type="checkbox" name="favorite-checkbox" id="edit-form-favorite-input"/>
+              <input
+                type="checkbox"
+                name="favorite-checkbox"
+                id="edit-form-favorite-input"
+              />
               <label for="favorite-checkbox">Mark as favorite</label>
             </div>
           </div>
@@ -152,15 +189,19 @@
           </div>
         </form>
       </section>
-      <section class="confirm-modal" id="confirm-modal">
-          <div class="modal-content">
-              <h3>Are you sure ?</h3>
-              <p>This action cannot be undone</p>
-              <div class = "modal-buttons">
-                  <button type="button" class="confirm-button" id="confirm-action">Confirm</button>
-                  <button type="button" class="cancel-button" id="cancel-action">Cancel</button>
-              </div>
+      <section class="confirm-modal" id="confirm-modal" style="display: none">
+        <div class="modal-content">
+          <h3>Are you sure?</h3>
+          <p>This action cannot be undone</p>
+          <div class="modal-buttons">
+            <button type="button" class="confirm-button" id="confirm-action">
+              Confirm
+            </button>
+            <button type="button" class="cancel-button" id="cancel-action">
+              Cancel
+            </button>
           </div>
+        </div>
       </section>
     </main>
   </body>

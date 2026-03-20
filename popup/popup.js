@@ -1,6 +1,7 @@
 import * as ideaService from "../service/IdeaService.js";
 import { Idea } from "../model/Idea.js";
 import { renderIdeaList } from "../utils/renderers.js";
+import { validateIdea } from "../utils/validators.js";
 // buttons
 const ToggleStatsButton = document.getElementById("toggle-stats");
 const addButton = document.getElementById("add-button");
@@ -17,6 +18,11 @@ const addFormFavorite = document.getElementById("add-form-favorite-input");
 const editFormTitle = document.getElementById("edit-form-title-input");
 const editFormBody = document.getElementById("edit-form-body-input");
 const editFormFavorite = document.getElementById("edit-form-favorite-input");
+// errors
+const addTitleError = document.getElementById("add-title-error");
+const addBodyError = document.getElementById("add-body-error");
+const editTitleError = document.getElementById("edit-title-error");
+const editBodyError = document.getElementById("edit-body-error");
 // components
 const stats = document.getElementById("content-stats");
 const ideas = document.getElementById("ideas");
@@ -31,9 +37,19 @@ const editPage = document.getElementById("edit-page");
 const navigateToHome = () => {
   editPage.style.display = "none";
   addPage.style.display = "none";
+  homePage.style.display = "flex";
+  resetForms();
+};
+const resetForms = () => {
   editForm.reset();
   addFrom.reset();
-  homePage.style.display = "flex";
+  resetFormsErrors();
+};
+const resetFormsErrors = () => {
+  addTitleError.classList.remove("error-visible");
+  addBodyError.classList.remove("error-visible");
+  editTitleError.classList.remove("error-visible");
+  editBodyError.classList.remove("error-visible");
 };
 const navigateToEdit = () => {
   homePage.style.display = "none";
@@ -146,26 +162,51 @@ ideas.addEventListener("click", async (e) => {
 // create
 createButton.addEventListener("click", async (e) => {
   e.preventDefault();
-  const idea = new Idea(
-    addFormTitle.value,
-    addFormBody.value,
-    addFormFavorite.checked,
-  );
-  await ideaService.add(idea);
-  await refreshIdeas();
-  navigateToHome();
-});
-// "save"
-saveButton.addEventListener("click", async () => {
-  ideaState.title = editFormTitle.value;
-  ideaState.body = editFormBody.value;
-  ideaState.isFavourite = editFormFavorite.checked;
-  const confirmed = await showConfirm(
-    "Are you sure you want to update this idea?",
-  );
-  if (confirmed) {
-    await ideaService.update(ideaState);
-    refreshIdeas();
+  resetFormsErrors();
+  const title = addFormTitle.value;
+  const body = addFormBody.value;
+  const errors = validateIdea(title, body);
+  if (errors.isValid) {
+    const idea = new Idea(title, body, addFormFavorite.checked);
+    await ideaService.add(idea);
+    await refreshIdeas();
     navigateToHome();
+  } else {
+    if (errors.hasTitleError) {
+      addTitleError.classList.add("error-visible");
+    }
+    if (errors.hasBodyError) {
+      addBodyError.classList.add("error-visible");
+    }
+  }
+});
+
+// save
+saveButton.addEventListener("click", async (e) => {
+  e.preventDefault();
+  resetFormsErrors();
+  const title = editFormTitle.value;
+  const body = editFormBody.value;
+  const errors = validateIdea(title, body);
+  if (errors.isValid) {
+    ideaState.title = title;
+    ideaState.body = body;
+    ideaState.isFavourite = editFormFavorite.checked;
+
+    const confirmed = await showConfirm(
+      "Are you sure you want to update this idea?",
+    );
+    if (confirmed) {
+      await ideaService.update(ideaState);
+      refreshIdeas();
+      navigateToHome();
+    }
+  } else {
+    if (errors.hasTitleError) {
+      editTitleError.classList.add("error-visible");
+    }
+    if (errors.hasBodyError) {
+      editBodyError.classList.add("error-visible");
+    }
   }
 });
