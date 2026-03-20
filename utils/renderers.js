@@ -10,7 +10,7 @@ const renderIdea = (idea) => {
     </div>
     <div class="card-buttons">
       <button type="button" class="use-button">Use</button>
-      <div class="actions">
+      <div class="card-actions">
         <button type="button" class="edit-button" id="${idea.id}">
           <i class="fa-solid fa-pen"></i>
         </button>
