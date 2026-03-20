@@ -135,7 +135,7 @@ main {
 }
 .hidden {
   max-height: 0;
-  padding: 0 1.1rem 0 1.1rem;
+  padding: 0rem 0.7rem 0rem 0.7rem;
 }
 .idea-number,
 .favorite-number,
@@ -269,7 +269,7 @@ main {
     linear-gradient(45deg, transparent 50%, currentColor 50%),
     linear-gradient(135deg, currentColor 50%, transparent 50%);
   background-position:
-    right 30px top 1.3em,
+    right 29px top 1.3em,
     right 25px top 1.3em;
   background-size:
     5px 5px,
@@ -387,6 +387,11 @@ main {
   max-height: 10000rem;
   overflow: visible;
   transition: var(--expansion);
+}
+.highlight {
+  background-color: var(--primary-color);
+  color: var(--bg-dark);
+  border-radius: 5px;
 }
 .card-buttons {
   display: flex;

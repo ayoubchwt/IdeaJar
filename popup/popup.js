@@ -2,6 +2,7 @@ import * as ideaService from "../service/IdeaService.js";
 import { Idea } from "../model/Idea.js";
 import { renderIdeaList } from "../utils/renderers.js";
 import { validateIdea } from "../utils/validators.js";
+import * as searchUtils from "../utils/filters.js";
 // buttons
 const ToggleStatsButton = document.getElementById("toggle-stats");
 const addButton = document.getElementById("add-button");
@@ -18,6 +19,8 @@ const addFormFavorite = document.getElementById("add-form-favorite-input");
 const editFormTitle = document.getElementById("edit-form-title-input");
 const editFormBody = document.getElementById("edit-form-body-input");
 const editFormFavorite = document.getElementById("edit-form-favorite-input");
+
+const searchInput = document.getElementById("search-input");
 // errors
 const addTitleError = document.getElementById("add-title-error");
 const addBodyError = document.getElementById("add-body-error");
@@ -70,8 +73,9 @@ const saveToggleStatus = () => {
 const validateInputs = () => {};
 // refreshing ideas
 const refreshIdeas = async () => {
-  const list = await ideaService.getAll();
-  renderIdeaList(ideas, list);
+  const allIdeas = await ideaService.getAll();
+  const list = searchUtils.search(allIdeas, searchInput.value);
+  renderIdeaList(ideas, list, searchInput.value);
 };
 // confirmation
 const showConfirm = (message) => {
@@ -209,4 +213,10 @@ saveButton.addEventListener("click", async (e) => {
       editBodyError.classList.add("error-visible");
     }
   }
+});
+searchInput.addEventListener("input", async () => {
+  const searchInputValue = searchInput.value;
+  const allIdeas = await ideaService.getAll();
+  const filteredIdeas = searchUtils.search(allIdeas, searchInputValue);
+  renderIdeaList(ideas, filteredIdeas, searchInputValue);
 });
