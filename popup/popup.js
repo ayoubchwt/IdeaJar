@@ -21,6 +21,7 @@ const editFormBody = document.getElementById("edit-form-body-input");
 const editFormFavorite = document.getElementById("edit-form-favorite-input");
 
 const searchInput = document.getElementById("search-input");
+const favoriteInput = document.getElementById("");
 // errors
 const addTitleError = document.getElementById("add-title-error");
 const addBodyError = document.getElementById("add-body-error");
