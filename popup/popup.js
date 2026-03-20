@@ -219,4 +219,10 @@ searchInput.addEventListener("input", async () => {
   const allIdeas = await ideaService.getAll();
   const filteredIdeas = searchUtils.search(allIdeas, searchInputValue);
   renderIdeaList(ideas, filteredIdeas, searchInputValue);
+  if (stats.classList.contains("hidden")) {
+    const ideaParagraphs = document.querySelectorAll(".paragraph");
+    ideaParagraphs.forEach((paragraph) => {
+      paragraph.classList.add("paragraph-expanded");
+    });
+  }
 });
