@@ -11,9 +11,10 @@ export const getById = async (id) => {
 export const add = async (idea) => {
   const ideas = await getAll(idea);
   ideas.push(idea);
-  await chrome.storage.local
-    .set({ [STORAGE_KEY]: ideas })
-    .then(console.log("idea added"));
+  await chrome.storage.local.set({ [STORAGE_KEY]: ideas });
+};
+export const addAll = async (ideas) => {
+  await chrome.storage.local.set({ [STORAGE_KEY]: ideas });
 };
 export const update = async (idea) => {
   const ideas = await getAll();

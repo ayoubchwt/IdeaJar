@@ -28,6 +28,8 @@ const editFormBody = document.getElementById("edit-form-body-input");
 const editFormFavorite = document.getElementById("edit-form-favorite-input");
 
 const searchInput = document.getElementById("search-input");
+
+const importInput = document.getElementById("import-input");
 // errors
 const addTitleError = document.getElementById("add-title-error");
 const addBodyError = document.getElementById("add-body-error");
@@ -271,3 +273,18 @@ favoriteOption.addEventListener("click", () => {
 exportOption.addEventListener("click", async () => {
   await backupService.exportDatabase();
 });
+importOption.addEventListener("click", async () => {
+  importInput.click();
+});
+importInput.addEventListener("change", async (e) => {
+  const dataFile = e.target.files[0];
+  if (!dataFile) return
+  const response = await backupService.importDatabase(dataFile);
+  console.log(response);
+  if (response) {
+    refreshIdeas();
+  }
+  else {
+    console.log("no import for you")
+  }
+})

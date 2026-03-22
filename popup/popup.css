@@ -479,6 +479,10 @@ main {
   height: 100%;
 }
 
+.import-option input {
+  display: none;
+}
+
 /* --- ideas --- */
 .ideas {
   max-height: 13rem;
