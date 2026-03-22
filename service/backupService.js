@@ -17,16 +17,16 @@ export const importDatabase = async (file) => {
     let importedIdeas;
     try {
         importedIdeas = JSON.parse(text);
+        if (!Array.isArray(importedIdeas)) {
+            return false;
+        }
+        const existingIdeas = await ideaService.getAll();
+        const existingIds = new Set(existingIdeas.map(i => i.id));
+        const newIdeas = importedIdeas.filter(i => !existingIds.has(i.id));
+        const mergedIdeas = [...existingIdeas, ...newIdeas];
+        await ideaService.addAll(mergedIdeas);
+        return true;
     } catch (e) {
         return false;
     }
-    if (!Array.isArray(importedIdeas)) {
-        return false;
-    }
-    const existingIdeas = await ideaService.getAll();
-    const existingIds = new Set(existingIdeas.map(i => i.id));
-    const newIdeas = importedIdeas.filter(i => !existingIds.has(i.id));
-    const mergedIdeas = [...existingIdeas, ...newIdeas];
-    await ideaService.addAll(mergedIdeas);
-    return true;
 };

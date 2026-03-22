@@ -837,7 +837,8 @@ main {
 }
 
 /* --- confirm modal --- */
-.confirm-modal {
+.confirm-modal,
+.info-modal {
   display: none;
   position: fixed;
   top: 0;
@@ -854,7 +855,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.1rem;
   align-items: center;
   background-color: var(--bg);
   border: 2px solid var(--bg-light);
@@ -868,7 +869,9 @@ main {
 }
 
 .modal-content p {
+  text-align: center;
   font-size: 0.8rem;
+  max-width: 15rem;
   color: var(--text-muted);
 }
 

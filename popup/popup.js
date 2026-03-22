@@ -16,6 +16,8 @@ const cancelActionButton = document.getElementById("cancel-action");
 const allOption = document.getElementById("all-option");
 const favoriteOption = document.getElementById("favorite-option");
 
+const confirmInfoButton = document.getElementById("confirm-info");
+
 const importOption = document.getElementById("import-option");
 const exportOption = document.getElementById("export-option");
 // inputs
@@ -40,7 +42,8 @@ const stats = document.getElementById("content-stats");
 const ideas = document.getElementById("ideas");
 const addFrom = document.getElementById("add-form");
 const editForm = document.getElementById("edit-form");
-const modal = document.getElementById("confirm-modal");
+const confirmModal = document.getElementById("confirm-modal");
+const infoModal = document.getElementById("info-modal");
 // pages
 const homePage = document.getElementById("home-page");
 const addPage = document.getElementById("add-page");
@@ -97,21 +100,33 @@ const refreshIdeas = async () => {
   }
 };
 // confirmation
-const showConfirm = (message) => {
-  modal.querySelector("p").innerText = message;
-  modal.style.display = "flex";
+const showConfirmModal = (message) => {
+  confirmModal.querySelector("p").innerText = message;
+  confirmModal.style.display = "flex";
 
   return new Promise((resolve) => {
     confirmActionButton.onclick = () => {
-      modal.style.display = "none";
+      confirmModal.style.display = "none";
       resolve(true);
     };
     cancelActionButton.onclick = () => {
-      modal.style.display = "none";
+      confirmModal.style.display = "none";
       resolve(false);
     };
   });
 };
+const showInfoModal = (title, body, buttonText) => {
+  infoModal.querySelector("h3").innerText = title;
+  infoModal.querySelector("p").innerText = body;
+  infoModal.querySelector("button").innerText = buttonText;
+  infoModal.style.display = "flex";
+  return new Promise((resolve) => {
+    confirmInfoButton.onclick = () => {
+      infoModal.style.display = "none";
+      resolve(true);
+    };
+  });
+}
 // events handling
 document.addEventListener("DOMContentLoaded", async () => {
   await refreshIdeas();
@@ -165,7 +180,7 @@ ideas.addEventListener("click", async (e) => {
   const deleteButton = e.target.closest(".delete-button");
   if (deleteButton) {
     ideaState = await ideaService.getById(deleteButton.id);
-    const confirmed = await showConfirm(
+    const confirmed = await showConfirmModal(
       "Are you sure you want to delete this idea?",
     );
     if (confirmed) {
@@ -209,6 +224,7 @@ createButton.addEventListener("click", async (e) => {
     await ideaService.add(idea);
     await refreshIdeas();
     navigateToHome();
+    showInfoModal("Idea Added", "Your new idea has been saved.", "done");
   } else {
     if (errors.hasTitleError) {
       addTitleError.classList.add("error-visible");
@@ -230,7 +246,7 @@ saveButton.addEventListener("click", async (e) => {
     ideaState.body = body;
     ideaState.isFavourite = editFormFavorite.checked;
 
-    const confirmed = await showConfirm(
+    const confirmed = await showConfirmModal(
       "Are you sure you want to update this idea?",
     );
     if (confirmed) {
@@ -283,8 +299,9 @@ importInput.addEventListener("change", async (e) => {
   console.log(response);
   if (response) {
     refreshIdeas();
+    showInfoModal("Import successful", "Your ideas have been imported successfully.", "done");
   }
   else {
-    console.log("no import for you")
+    showInfoModal("Import failed", "We couldn't import your file. Please make sure it's a valid backup.", "Try Again");
   }
-})
+});
