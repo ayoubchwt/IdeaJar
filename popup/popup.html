@@ -1,209 +1,179 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IdeaJar</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./popup.css" />
-  </head>
-  <body class="preload">
-    <nav>
-      <section class="logo">
-        <img src="../assets/icons/logo48.png" alt="Logo" />
-        <h1 class="logo-text">IdeaJar</h1>
-      </section>
-      <section class="settings">
-        <button type="button" id="toggle-stats">
-          <i class="fa-solid fa-eye-low-vision"></i>
-        </button>
-        <button type="button">
-          <i class="fa-solid fa-circle-half-stroke"></i>
-        </button>
-        <button type="button">
-          <i class="fa-brands fa-github"></i>
-        </button>
-      </section>
-    </nav>
-    <main>
-      <section class="home-page" id="home-page">
-        <section class="content-stats" id="content-stats">
-          <div class="idea-number">
-            <h1>15</h1>
-            <h2>Ideas</h2>
-            <p>All ideas stored in your library</p>
-          </div>
-          <div class="favorite-number">
-            <h1>4</h1>
-            <h2>Favorite Ideas</h2>
-            <p>Ideas marked as favorite</p>
-          </div>
-          <div class="export-status">
-            <div class="info">
-              <h2>Last Backup</h2>
-              <p>Last idea library export</p>
-            </div>
-            <h1>3/15/2026</h1>
-          </div>
-        </section>
-        <section class="content">
-          <section class="filters">
-            <div class="search-box">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input
-                type="text"
-                name="search"
-                placeholder="Search for an Idea ..."
-                autocomplete="off"
-                id="search-input"
-              />
-            </div>
-            <div class="actions">
-              <select class="favorite-filter">
-                <option value="all">Show All</option>
-                <option value="favorite">Favorite</option>
-              </select>
-              <button type="button" class="add-button" id="add-button">
-                <i class="fa-solid fa-plus"></i>
-              </button>
-              <button type="button" class="backup-button">
-                <i class="fa-solid fa-hard-drive"></i>
-              </button>
-            </div>
-          </section>
-          <section class="ideas" id="ideas"></section>
-        </section>
-      </section>
-      <section class="add-page" id="add-page" style="display: none">
-        <form class="add-form" id="add-form">
-          <h1>Create Idea</h1>
-          <div class="add-inputs-container">
-            <div class="add-form-title">
-              <label for="title">Idea Title</label>
-              <div class="input-wrapper">
-                <input
-                  id="add-form-title-input"
-                  type="text"
-                  name="title"
-                  maxlength="55"
-                  placeholder="e.g. Weekly Status Update"
-                />
-                <p class="add-title-error" id="add-title-error">
-                  Please enter at least one word :))
-                </p>
-              </div>
-            </div>
 
-            <div class="add-form-body">
-              <label for="body">Idea Body</label>
-              <div class="input-wrapper">
-                <textarea
-                  id="add-form-body-input"
-                  name="body"
-                  rows="12"
-                  cols="60"
-                  maxlength="5000"
-                  placeholder="Describe your idea, prompt, or template here..."
-                ></textarea>
-                <p class="add-body-error" id="add-body-error">
-                  Come on, this can't be the only thing you got in mind :))
-                </p>
-              </div>
-            </div>
-            <div class="add-form-checkbox">
-              <input
-                id="add-form-favorite-input"
-                type="checkbox"
-                name="favorite-checkbox"
-              />
-              <label for="favorite-checkbox">Mark as favorite</label>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IdeaJar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./popup.css" />
+</head>
+
+<body class="preload">
+  <nav>
+    <section class="logo">
+      <img src="../assets/icons/logo48.png" alt="Logo" />
+      <h1 class="logo-text">IdeaJar</h1>
+    </section>
+    <section class="settings">
+      <button type="button" id="toggle-stats">
+        <i class="fa-solid fa-eye-low-vision"></i>
+      </button>
+      <button type="button">
+        <i class="fa-solid fa-circle-half-stroke"></i>
+      </button>
+      <button type="button">
+        <i class="fa-brands fa-github"></i>
+      </button>
+    </section>
+  </nav>
+  <main>
+    <section class="home-page" id="home-page">
+      <section class="content-stats" id="content-stats">
+        <div class="idea-number">
+          <h1>15</h1>
+          <h2>Ideas</h2>
+          <p>All ideas stored in your library</p>
+        </div>
+        <div class="favorite-number">
+          <h1>4</h1>
+          <h2>Favorite Ideas</h2>
+          <p>Ideas marked as favorite</p>
+        </div>
+        <div class="export-status">
+          <div class="info">
+            <h2>Last Backup</h2>
+            <p>Last idea library export</p>
           </div>
-          <div class="add-form-buttons">
-            <button type="button" class="create-button" id="create-button">
-              Create
-            </button>
-            <button type="button" class="cancel-button">Cancel</button>
-          </div>
-        </form>
-      </section>
-      <section class="edit-page" id="edit-page" style="display: none">
-        <form class="edit-form" id="edit-form">
-          <h1>Edit Idea</h1>
-          <div class="edit-inputs-container">
-            <div class="edit-form-title">
-              <label for="title">Idea Title</label>
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  name="title"
-                  id="edit-form-title-input"
-                  maxlength="55"
-                />
-                <p class="edit-title-error" id="edit-title-error">
-                  Please enter at least one word :))
-                </p>
-              </div>
-            </div>
-            <div class="edit-form-body">
-              <label for="body">Idea Body</label>
-              <div class="input-wrapper">
-                <textarea
-                  name="body"
-                  rows="12"
-                  cols="60"
-                  id="edit-form-body-input"
-                  maxlength="5000"
-                ></textarea>
-                <p class="edit-body-error" id="edit-body-error">
-                  Come on, this can't be the only thing you got in mind :))
-                </p>
-              </div>
-            </div>
-            <div class="edit-form-checkbox">
-              <input
-                type="checkbox"
-                name="favorite-checkbox"
-                id="edit-form-favorite-input"
-              />
-              <label for="favorite-checkbox">Mark as favorite</label>
-            </div>
-          </div>
-          <div class="edit-form-buttons">
-            <button type="button" class="save-button" id="save-button">
-              Save
-            </button>
-            <button type="button" class="cancel-button">Cancel</button>
-          </div>
-        </form>
-      </section>
-      <section class="confirm-modal" id="confirm-modal" style="display: none">
-        <div class="modal-content">
-          <h3>Are you sure?</h3>
-          <p>This action cannot be undone</p>
-          <div class="modal-buttons">
-            <button type="button" class="confirm-button" id="confirm-action">
-              Confirm
-            </button>
-            <button type="button" class="cancel-button" id="cancel-action">
-              Cancel
-            </button>
-          </div>
+          <h1>3/15/2026</h1>
         </div>
       </section>
-    </main>
-  </body>
-  <script type="module" src="popup.js"></script>
+      <section class="content">
+        <section class="filters">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" name="search" placeholder="Search for an Idea ..." autocomplete="off"
+              id="search-input" />
+          </div>
+          <div class="actions">
+            <div class="favorite-filter" id="favorite-filter">
+              <div class="filter-trigger" id="filter-trigger">
+                <span>Show all</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <div class="favorite-filter-options" id="favorite-filter-options">
+                <div class="all-option" data-value="all">Show All</div>
+                <hr>
+                <div class="favorite-option" data-value="favorite">Only Favorite</div>
+              </div>
+            </div>
+            <button type="button" class="add-button" id="add-button">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+            <button type="button" class="backup-button">
+              <i class="fa-solid fa-hard-drive"></i>
+            </button>
+          </div>
+        </section>
+        <section class="ideas" id="ideas"></section>
+      </section>
+    </section>
+    <section class="add-page" id="add-page" style="display: none">
+      <form class="add-form" id="add-form">
+        <h1>Create Idea</h1>
+        <div class="add-inputs-container">
+          <div class="add-form-title">
+            <label for="title">Idea Title</label>
+            <div class="input-wrapper">
+              <input id="add-form-title-input" type="text" name="title" maxlength="55"
+                placeholder="e.g. Weekly Status Update" />
+              <p class="add-title-error" id="add-title-error">
+                Please enter at least one word :))
+              </p>
+            </div>
+          </div>
+
+          <div class="add-form-body">
+            <label for="body">Idea Body</label>
+            <div class="input-wrapper">
+              <textarea id="add-form-body-input" name="body" rows="12" cols="60" maxlength="5000"
+                placeholder="Describe your idea, prompt, or template here..."></textarea>
+              <p class="add-body-error" id="add-body-error">
+                Come on, this can't be the only thing you got in mind :))
+              </p>
+            </div>
+          </div>
+          <div class="add-form-checkbox">
+            <input id="add-form-favorite-input" type="checkbox" name="favorite-checkbox" />
+            <label for="favorite-checkbox">Mark as favorite</label>
+          </div>
+        </div>
+        <div class="add-form-buttons">
+          <button type="button" class="create-button" id="create-button">
+            Create
+          </button>
+          <button type="button" class="cancel-button">Cancel</button>
+        </div>
+      </form>
+    </section>
+    <section class="edit-page" id="edit-page" style="display: none">
+      <form class="edit-form" id="edit-form">
+        <h1>Edit Idea</h1>
+        <div class="edit-inputs-container">
+          <div class="edit-form-title">
+            <label for="title">Idea Title</label>
+            <div class="input-wrapper">
+              <input type="text" name="title" id="edit-form-title-input" maxlength="55" />
+              <p class="edit-title-error" id="edit-title-error">
+                Please enter at least one word :))
+              </p>
+            </div>
+          </div>
+          <div class="edit-form-body">
+            <label for="body">Idea Body</label>
+            <div class="input-wrapper">
+              <textarea name="body" rows="12" cols="60" id="edit-form-body-input" maxlength="5000"></textarea>
+              <p class="edit-body-error" id="edit-body-error">
+                Come on, this can't be the only thing you got in mind :))
+              </p>
+            </div>
+          </div>
+          <div class="edit-form-checkbox">
+            <input type="checkbox" name="favorite-checkbox" id="edit-form-favorite-input" />
+            <label for="favorite-checkbox">Mark as favorite</label>
+          </div>
+        </div>
+        <div class="edit-form-buttons">
+          <button type="button" class="save-button" id="save-button">
+            Save
+          </button>
+          <button type="button" class="cancel-button">Cancel</button>
+        </div>
+      </form>
+    </section>
+    <section class="confirm-modal" id="confirm-modal" style="display: none">
+      <div class="modal-content">
+        <h3>Are you sure?</h3>
+        <p>This action cannot be undone</p>
+        <div class="modal-buttons">
+          <button type="button" class="confirm-button" id="confirm-action">
+            Confirm
+          </button>
+          <button type="button" class="cancel-button" id="cancel-action">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+<script type="module" src="popup.js"></script>
+<script type="module" src="../utils/components.js"></script>
+
 </html>

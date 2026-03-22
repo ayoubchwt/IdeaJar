@@ -70,7 +70,7 @@ const saveToggleStatus = () => {
   localStorage.setItem("IdeaJar_Stats_Hidden", isHidden);
 };
 // validators (later on)
-const validateInputs = () => {};
+const validateInputs = () => { };
 // refreshing ideas
 const refreshIdeas = async () => {
   const allIdeas = await ideaService.getAll();

@@ -8,6 +8,7 @@
   font-weight: normal;
   font-size: normal;
 }
+
 :root {
   /* dark palette */
   --bg-dark: hsl(0 0 0);
@@ -22,6 +23,7 @@
   --check: all 0.3s ease;
   --expansion: max-height 0.35s ease;
 }
+
 :root.light {
   /* light palette */
   --bg-dark: hsl(0 0 90);
@@ -30,21 +32,24 @@
   --text: hsl(0 0 5);
   --text-muted: hsl(0 0 30);
   --primary-color: #d79b16;
-  --button-hover: all 0.4s ease;
-  --input-focus: border 0.4s ease;
+  --button-hover: all 0.3s ease;
+  --input-focus: border 0.3s ease;
   --check: all 0.3s ease;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Mona Sans", sans-serif;
 }
+
 html {
   font-size: 18px;
   min-width: 600px;
   height: 600px;
 }
+
 body {
   background-color: var(--bg-dark);
   display: flex;
@@ -54,10 +59,12 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
+
 /* we added this class to the body in order to disable all the animations at opening */
 .preload * {
   transition: none !important;
 }
+
 /* --- Header --- */
 nav {
   padding: 0.4rem 0.7rem 0.2rem 0.6rem;
@@ -65,20 +72,24 @@ nav {
   flex-direction: row;
   justify-content: space-between;
 }
+
 .logo {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
 }
+
 .logo img {
   width: 2.5rem;
 }
+
 .logo-text {
   font-family: Beachday;
   font-size: 1.3rem;
   color: var(--primary-color);
 }
+
 .settings {
   padding-right: 0.3rem;
   gap: 0.7rem;
@@ -87,6 +98,7 @@ nav {
   align-items: center;
   justify-content: center;
 }
+
 .settings button {
   background-color: transparent;
   border: none;
@@ -97,19 +109,23 @@ nav {
   cursor: pointer;
   transition: var(--button-hover);
 }
+
 .settings button i {
   color: var(--text);
   font-size: 1.2rem;
 }
+
 .settings button:hover {
   background-color: var(--bg-light);
 }
+
 /* --- main --- */
 main {
   margin: 0;
   padding: 0;
   width: 100%;
 }
+
 /* --- home --- */
 .home-page {
   display: flex;
@@ -117,9 +133,11 @@ main {
   gap: 0.8rem;
   width: 100%;
 }
+
 .home-page-expanded {
   gap: 0rem;
 }
+
 /* --- stats --- */
 .content-stats {
   max-height: 13rem;
@@ -133,10 +151,12 @@ main {
   overflow: hidden;
   transition: var(--expansion);
 }
+
 .hidden {
   max-height: 0;
   padding: 0rem 0.7rem 0rem 0.7rem;
 }
+
 .idea-number,
 .favorite-number,
 .export-status {
@@ -145,6 +165,7 @@ main {
   padding-right: 1.8rem;
   padding-left: 1.8rem;
 }
+
 .idea-number h1,
 .favorite-number h1,
 .export-status h1 {
@@ -152,6 +173,7 @@ main {
   font-size: 1.5rem;
   padding-bottom: 0.4rem;
 }
+
 .idea-number h2,
 .favorite-number h2,
 .export-status h2 {
@@ -159,6 +181,7 @@ main {
   color: var(--text);
   padding-bottom: 0.3rem;
 }
+
 .idea-number p,
 .favorite-number p,
 .export-status p {
@@ -166,6 +189,7 @@ main {
   letter-spacing: 0.4px;
   color: var(--text-muted);
 }
+
 .idea-number {
   display: flex;
   flex-direction: column;
@@ -175,6 +199,7 @@ main {
   grid-area: idea-number;
   height: 7rem;
 }
+
 .favorite-number {
   display: flex;
   flex-direction: column;
@@ -184,6 +209,7 @@ main {
   grid-area: favorite-number;
   height: 7rem;
 }
+
 .export-status {
   background-color: var(--bg);
   grid-area: export-status;
@@ -193,6 +219,7 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+
 /* --- content --- */
 .content {
   padding: 0rem 0.7rem 0rem 0.7rem;
@@ -200,6 +227,7 @@ main {
   flex-direction: column;
   gap: 0.8rem;
 }
+
 /* --- filters & actions --- */
 .filters {
   display: flex;
@@ -207,6 +235,7 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+
 .search-box {
   background-color: var(--bg);
   width: 16rem;
@@ -219,6 +248,7 @@ main {
   padding: 0;
   border-radius: 10px;
 }
+
 .search-box input {
   background-color: var(--bg);
   width: 100%;
@@ -228,9 +258,11 @@ main {
   color: var(--text-muted);
   font-size: 0.8rem;
 }
+
 .search-box input:focus {
   outline: none;
 }
+
 .search-box i {
   padding-right: 0.6rem;
   padding-left: 0.9rem;
@@ -242,6 +274,7 @@ main {
   align-items: center;
   justify-content: center;
 }
+
 .actions {
   display: flex;
   flex-direction: row;
@@ -250,34 +283,83 @@ main {
   height: 2.3rem;
   gap: 0.8rem;
 }
+
 .favorite-filter {
-  appearance: none;
-  -webkit-appearance: none;
   width: 8.5rem;
   height: 2.3rem;
+  position: relative;
   background-color: var(--bg);
   color: var(--text);
-  font-size: 0.8rem;
-  border: none;
   border-radius: 10px;
-  padding-left: 1.8rem;
-  padding-right: 1.8rem;
-  position: relative;
   cursor: pointer;
-  background-repeat: no-repeat;
-  background-image:
-    linear-gradient(45deg, transparent 50%, currentColor 50%),
-    linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position:
-    right 29px top 1.3em,
-    right 25px top 1.3em;
-  background-size:
-    5px 5px,
-    5px 5px;
+  font-size: 0.8rem;
 }
-.favorite-filter:focus {
-  outline: none;
+
+.filter-trigger {
+  display: flex;
+  flex-direction: row;
+  padding-left: 1.5rem;
+  gap: 1.5rem;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
+
+.favorite-filter.open .filter-trigger i {
+  transform: rotate(180deg);
+}
+
+.favorite-filter-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: rem 0rem 0.8rem 0rem;
+  position: absolute;
+  top: 120%;
+  background-color: var(--bg);
+  color: var(--text-muted);
+  width: 100%;
+  border-radius: 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: var(--expansion);
+}
+
+.favorite-filter.open .favorite-filter-options {
+  max-height: 5rem;
+}
+
+.favorite-filter-options hr {
+  height: 1px;
+  border-width: 0;
+  color: var(--bg-light);
+  background-color: var(--bg-light);
+}
+
+.all-option,
+.favorite-option {
+  padding: 0.5rem 0rem 0.5rem 1.5rem;
+  transition: var(--button-hover);
+}
+
+.all-option {
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.favorite-option {
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px 0px 10px 10px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.favorite-option:hover,
+.all-option:hover {
+  background-color: var(--bg-light);
+  height: 100%;
+}
+
 .add-button,
 .backup-button {
   background-color: var(--bg);
@@ -288,21 +370,26 @@ main {
   cursor: pointer;
   transition: var(--button-hover);
 }
+
 .add-button {
   border-radius: 50%;
 }
+
 .backup-button {
   border-radius: 10px;
 }
+
 .add-button i,
 .backup-button i {
   color: var(--text);
   font-size: 0.8rem;
 }
+
 .add-button:hover,
 .backup-button:hover {
   background-color: var(--bg-light);
 }
+
 /* --- ideas --- */
 .ideas {
   max-height: 13rem;
@@ -312,8 +399,10 @@ main {
   gap: 1rem;
   overflow: auto;
   scrollbar-width: none;
-  transition: var(--expansion); /* needs to be a variable*/
+  transition: var(--expansion);
+  /* needs to be a variable*/
 }
+
 .empty-error {
   color: var(--text);
   width: 100%;
@@ -322,14 +411,17 @@ main {
   min-height: 5rem;
   letter-spacing: 0.4px;
 }
+
 .ideas-expanded {
   max-height: 26rem;
 }
+
 .ideas::-webkit-scrollbar {
   width: 0px !important;
   background: transparent !important;
   display: none !important;
 }
+
 .idea-card {
   background-color: var(--bg);
   padding: 0.8rem 1.1rem 0.8rem 1.1rem;
@@ -344,6 +436,7 @@ main {
   border-radius: 10px;
   flex-shrink: 0;
 }
+
 .idea-card h3 {
   width: 100%;
   text-align: end;
@@ -351,6 +444,7 @@ main {
   font-weight: 300;
   font-size: 0.7rem;
 }
+
 .idea-container {
   display: flex;
   flex-direction: column;
@@ -359,6 +453,7 @@ main {
   min-height: 8rem;
   width: 100%;
 }
+
 .idea-card h1 {
   width: 100%;
   color: var(--text);
@@ -367,6 +462,7 @@ main {
   text-wrap: nowrap;
   text-overflow: ellipsis;
 }
+
 .paragraph {
   width: 100%;
   color: var(--text-muted);
@@ -382,17 +478,20 @@ main {
   max-height: 15rem;
   transition: var(--expansion);
 }
+
 .paragraph-expanded {
   display: block;
   max-height: 10000rem;
   overflow: visible;
   transition: var(--expansion);
 }
+
 .highlight {
   background-color: var(--primary-color);
   color: var(--bg-dark);
   border-radius: 5px;
 }
+
 .card-buttons {
   display: flex;
   flex-direction: row;
@@ -400,6 +499,7 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+
 .use-button {
   height: 1.7rem;
   width: 6rem;
@@ -411,10 +511,12 @@ main {
   transition: var(--button-hover);
   cursor: pointer;
 }
+
 .use-button:hover {
   background-color: var(--primary-color);
   color: var(--bg);
 }
+
 .card-actions {
   display: flex;
   flex-direction: row;
@@ -424,6 +526,7 @@ main {
   height: 2.3rem;
   gap: 0.8rem;
 }
+
 .edit-button,
 .delete-button,
 .favorite-button {
@@ -435,12 +538,14 @@ main {
   border-radius: 10px;
   transition: var(--button-hover);
 }
+
 .edit-button:hover,
 .delete-button:hover,
 .favorite-button:hover {
   background-color: var(--text-muted);
   color: var(--bg);
 }
+
 /* --- add page & edit page (easy to separate the css if needed later) --- */
 .add-page,
 .edit-page {
@@ -448,6 +553,7 @@ main {
   justify-content: center;
   align-items: center;
 }
+
 .add-form,
 .edit-form {
   width: 31rem;
@@ -460,11 +566,13 @@ main {
   flex-direction: column;
   border-radius: 10px;
 }
+
 .add-form h1,
 .edit-form h1 {
   font-size: 1.5rem;
   color: var(--text);
 }
+
 .add-inputs-container,
 .edit-inputs-container {
   display: flex;
@@ -472,6 +580,7 @@ main {
   justify-content: center;
   gap: 0.8rem;
 }
+
 .add-form-title,
 .add-form-body,
 .edit-form-title,
@@ -481,6 +590,7 @@ main {
   align-items: start;
   gap: 0.5rem;
 }
+
 .add-form-title label,
 .add-form-body label,
 .add-form-checkbox label,
@@ -491,12 +601,14 @@ main {
   font-weight: 400;
   color: var(--text-muted);
 }
+
 .add-form-title input,
 .edit-form-title input {
   height: 2.8rem;
   border-radius: 5px;
   padding-left: 0.8rem;
 }
+
 .add-form-body textarea,
 .edit-form-body textarea {
   height: 8.5rem;
@@ -504,6 +616,7 @@ main {
   padding: 0.8rem;
   scrollbar-width: none;
 }
+
 .add-form-title input,
 .add-form-body textarea,
 .edit-form-title input,
@@ -520,12 +633,14 @@ main {
   width: 25.5rem;
   transition: var(--input-focus);
 }
+
 .add-form-title input:focus,
 .add-form-body textarea:focus,
 .edit-form-title input:focus,
 .edit-form-body textarea:focus {
   border-color: var(--text-muted);
 }
+
 .add-form-checkbox,
 .edit-form-checkbox {
   display: flex;
@@ -533,6 +648,7 @@ main {
   gap: 0.5rem;
   align-items: center;
 }
+
 .add-form-checkbox input,
 .edit-form-checkbox input {
   appearance: none;
@@ -545,10 +661,12 @@ main {
   transition: var(--check);
   cursor: pointer;
 }
+
 .add-form-checkbox input:checked,
 .edit-form-checkbox input:checked {
   background-color: var(--primary-color);
 }
+
 .add-form-buttons,
 .edit-form-buttons {
   display: flex;
@@ -556,6 +674,7 @@ main {
   align-items: center;
   gap: 1rem;
 }
+
 .create-button,
 .save-button,
 .cancel-button,
@@ -568,6 +687,7 @@ main {
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .create-button,
 .save-button,
 .confirm-button {
@@ -577,27 +697,32 @@ main {
   font-family: "Mona Sans", sans-serif;
   transition: var(--button-hover);
 }
+
 .cancel-button {
   border: 1px solid var(--text-muted);
   background-color: transparent;
   color: var(--text-muted);
   transition: var(--button-hover);
 }
+
 .create-button:hover,
 .save-button:hover,
 .confirm-button:hover {
   background-color: var(--hover-color);
   border-color: var(--hover-color);
 }
+
 .cancel-button:hover {
   background-color: var(--bg-dark);
 }
+
 .create-button:active,
 .save-button:active,
 .cancel-button:active,
 .confirm-button:active {
   transform: scale(0.97);
 }
+
 .input-wrapper {
   display: flex;
   flex-direction: column;
@@ -605,6 +730,7 @@ main {
   align-items: start;
   gap: 0.3rem;
 }
+
 .add-title-error,
 .edit-title-error,
 .add-body-error,
@@ -612,9 +738,11 @@ main {
   color: var(--bg);
   /* color: var(--hover-color); */
 }
+
 .error-visible {
   color: var(--hover-color);
 }
+
 /* --- confirm modal --- */
 .confirm-modal {
   display: none;
@@ -626,6 +754,7 @@ main {
   align-items: center;
   justify-content: center;
 }
+
 .modal-content {
   width: 20rem;
   height: 10rem;
@@ -638,15 +767,18 @@ main {
   border: 2px solid var(--bg-light);
   border-radius: 10px;
 }
+
 .modal-content h3 {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text);
 }
+
 .modal-content p {
   font-size: 0.8rem;
   color: var(--text-muted);
 }
+
 .modal-buttons {
   display: flex;
   flex-direction: row;
