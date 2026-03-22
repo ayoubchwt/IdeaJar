@@ -3,6 +3,7 @@ import { Idea } from "../model/Idea.js";
 import { renderIdeaList } from "../utils/renderers.js";
 import { validateIdea } from "../utils/validators.js";
 import * as searchUtils from "../utils/filters.js";
+import * as backupService from "../service/backupService.js";
 // buttons
 const ToggleStatsButton = document.getElementById("toggle-stats");
 const addButton = document.getElementById("add-button");
@@ -14,6 +15,9 @@ const cancelActionButton = document.getElementById("cancel-action");
 
 const allOption = document.getElementById("all-option");
 const favoriteOption = document.getElementById("favorite-option");
+
+const importOption = document.getElementById("import-option");
+const exportOption = document.getElementById("export-option");
 // inputs
 const addFormTitle = document.getElementById("add-form-title-input");
 const addFormBody = document.getElementById("add-form-body-input");
@@ -263,4 +267,7 @@ allOption.addEventListener("click", () => {
 favoriteOption.addEventListener("click", () => {
   favoriteState = true;
   refreshIdeas();
+});
+exportOption.addEventListener("click", async () => {
+  await backupService.exportDatabase();
 });
