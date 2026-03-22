@@ -7,4 +7,7 @@ export const search = (ideas, searchInput) => {
     return titleMatch || bodyMatch;
   });
 };
-export const favoriteFilter = (ideas) => {};
+export const favoriteFilter = (ideas) => {
+  console.log("am inside favoriteFilter");
+  return ideas.filter(idea => idea.isFavorite === true);
+};

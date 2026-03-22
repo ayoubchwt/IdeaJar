@@ -11,6 +11,9 @@ const createButton = document.getElementById("create-button");
 const saveButton = document.getElementById("save-button");
 const confirmActionButton = document.getElementById("confirm-action");
 const cancelActionButton = document.getElementById("cancel-action");
+
+const allOption = document.getElementById("all-option");
+const favoriteOption = document.getElementById("favorite-option");
 // inputs
 const addFormTitle = document.getElementById("add-form-title-input");
 const addFormBody = document.getElementById("add-form-body-input");
@@ -64,6 +67,7 @@ const navigateToAdd = () => {
 };
 // states
 let ideaState = "";
+let favoriteState = false;
 // saving toggle status
 const saveToggleStatus = () => {
   const isHidden = stats.classList.contains("hidden");
@@ -74,8 +78,11 @@ const validateInputs = () => { };
 // refreshing ideas
 const refreshIdeas = async () => {
   const allIdeas = await ideaService.getAll();
-  const list = searchUtils.search(allIdeas, searchInput.value);
-  renderIdeaList(ideas, list, searchInput.value);
+  let list = searchUtils.search(allIdeas, searchInput.value);
+  if (favoriteState) {
+    list = searchUtils.favoriteFilter(list);
+  }
+  renderIdeaList(ideas, list, searchInput.value, favoriteState);
   if (stats.classList.contains("hidden")) {
     const ideaParagraphs = document.querySelectorAll(".paragraph");
     ideaParagraphs.forEach((paragraph) => {
@@ -163,7 +170,7 @@ ideas.addEventListener("click", async (e) => {
   const favoriteButton = e.target.closest(".favorite-button");
   if (favoriteButton) {
     ideaState = await ideaService.getById(favoriteButton.id);
-    ideaState.isFavourite = !ideaState.isFavourite;
+    ideaState.isFavorite = !ideaState.isFavorite;
     await ideaService.update(ideaState);
     refreshIdeas();
   }
@@ -236,13 +243,24 @@ saveButton.addEventListener("click", async (e) => {
 });
 searchInput.addEventListener("input", async () => {
   const searchInputValue = searchInput.value;
-  const allIdeas = await ideaService.getAll();
+  let allIdeas = await ideaService.getAll();
+  if (favoriteState) {
+    allIdeas = searchUtils.favoriteFilter(allIdeas);
+  }
   const filteredIdeas = searchUtils.search(allIdeas, searchInputValue);
-  renderIdeaList(ideas, filteredIdeas, searchInputValue);
+  renderIdeaList(ideas, filteredIdeas, searchInputValue, favoriteState);
   if (stats.classList.contains("hidden")) {
     const ideaParagraphs = document.querySelectorAll(".paragraph");
     ideaParagraphs.forEach((paragraph) => {
       paragraph.classList.add("paragraph-expanded");
     });
   }
+});
+allOption.addEventListener("click", () => {
+  favoriteState = false;
+  refreshIdeas();
+});
+favoriteOption.addEventListener("click", () => {
+  favoriteState = true;
+  refreshIdeas();
 });

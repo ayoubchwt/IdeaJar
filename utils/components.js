@@ -1,4 +1,3 @@
-console.log("am inside components");
 const favoriteFilter = document.getElementById("favorite-filter");
 const filterTrigger = document.getElementById("filter-trigger");
 const allOption = document.getElementById("all-option");

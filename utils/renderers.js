@@ -23,17 +23,17 @@ const renderIdea = (idea, searchInput = "") => {
           <i class="fa-solid fa-trash"></i>
         </button>
         <button type="button" class="favorite-button" id="${idea.id}">
-        ${idea.isFavourite ? '<i class="fa-solid fa-star"></i>' : ' <i class="fa-regular fa-star"></i>'}  
+        ${idea.isFavorite ? '<i class="fa-solid fa-star"></i>' : ' <i class="fa-regular fa-star"></i>'}  
         </button>
       </div>
     </div>
   `;
   return card;
 };
-export const renderIdeaList = (ideas, list, searchInput = "") => {
+export const renderIdeaList = (ideas, list, searchInput = "", favoriteState) => {
   ideas.innerHTML = "";
   const isSearching = searchInput.trim().length > 0;
-  if (isSearching && list.length === 0) {
+  if (list.length === 0 && (isSearching || favoriteState)) {
     ideas.innerHTML = `<p class="empty-error"> No ideas Found. </p>`;
     return;
   }
