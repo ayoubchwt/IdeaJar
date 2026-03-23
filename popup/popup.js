@@ -20,6 +20,7 @@ const confirmInfoButton = document.getElementById("confirm-info");
 
 const importOption = document.getElementById("import-option");
 const exportOption = document.getElementById("export-option");
+const cleanOption = document.getElementById("clean-option");
 // inputs
 const addFormTitle = document.getElementById("add-form-title-input");
 const addFormBody = document.getElementById("add-form-body-input");
@@ -303,5 +304,14 @@ importInput.addEventListener("change", async (e) => {
   }
   else {
     showInfoModal("Import failed", "We couldn't import your file. Please make sure it's a valid backup.", "Try Again");
+  }
+});
+cleanOption.addEventListener("click", async () => {
+  const confirmed = await showConfirmModal(
+    "Are you sure you want to delete all your ideas?",
+  );
+  if (confirmed) {
+    await ideaService.removeAll();
+    refreshIdeas();
   }
 });

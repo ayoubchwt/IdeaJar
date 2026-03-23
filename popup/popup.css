@@ -408,7 +408,7 @@ main {
 }
 
 .backup-container.open .backup-options {
-  max-height: 5rem;
+  max-height: 12rem;
   box-shadow: var(--shadow-main),
     var(--shadow-outline);
 }
@@ -451,7 +451,8 @@ main {
 }
 
 .import-option,
-.export-option {
+.export-option,
+.clean-option {
   padding: 0.5rem;
   width: 100%;
   height: 100%;
@@ -467,14 +468,15 @@ main {
   border-radius: 10px 10px 0px 0px;
 }
 
-.export-option {
+.clean-option-option {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px 0px 10px 10px;
   border-radius: 0px 0px 10px 10px;
 }
 
 .import-option:hover,
-.export-option:hover {
+.export-option:hover,
+.clean-option:hover {
   background-color: var(--bg-light);
   height: 100%;
 }
@@ -847,6 +849,8 @@ main {
   height: 100%;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-main),
+    var(--shadow-outline);
 }
 
 .modal-content {

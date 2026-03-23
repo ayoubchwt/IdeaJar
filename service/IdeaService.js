@@ -13,6 +13,7 @@ export const add = async (idea) => {
   ideas.push(idea);
   await chrome.storage.local.set({ [STORAGE_KEY]: ideas });
 };
+
 export const addAll = async (ideas) => {
   await chrome.storage.local.set({ [STORAGE_KEY]: ideas });
 };
@@ -33,3 +34,6 @@ export const remove = async (idea) => {
     await chrome.storage.local.set({ [STORAGE_KEY]: ideas });
   }
 };
+export const removeAll = async () => {
+  await chrome.storage.local.remove(STORAGE_KEY);
+}
