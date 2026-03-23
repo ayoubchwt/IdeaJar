@@ -1,9 +1,11 @@
 import * as ideaService from "../service/IdeaService.js";
+import * as backupService from "../service/backupService.js";
+import * as themeService from "../service/themeService.js"
 import { Idea } from "../model/Idea.js";
 import { renderIdeaList } from "../utils/renderers.js";
 import { validateIdea } from "../utils/validators.js";
 import * as searchUtils from "../utils/filters.js";
-import * as backupService from "../service/backupService.js";
+
 // buttons
 const ToggleStatsButton = document.getElementById("toggle-stats");
 const addButton = document.getElementById("add-button");
@@ -48,6 +50,7 @@ const infoModal = document.getElementById("info-modal");
 const ideaNumberOutput = document.getElementById("idea-number-output");
 const favoriteNumberOutput = document.getElementById("favorite-number-output");
 const exportStatusOuput = document.getElementById("export-status-ouput");
+const themeOptions = document.querySelectorAll(".theme-option");
 // pages
 const homePage = document.getElementById("home-page");
 const addPage = document.getElementById("add-page");
@@ -134,6 +137,8 @@ const showInfoModal = (title, body, buttonText) => {
 }
 // events handling
 document.addEventListener("DOMContentLoaded", async () => {
+  const savedTheme = await themeService.getTheme();
+  await applyTheme(savedTheme);
   await refreshIdeas();
   const isHidden = localStorage.getItem("IdeaJar_Stats_Hidden");
   if (isHidden === "true") {
@@ -321,3 +326,15 @@ cleanOption.addEventListener("click", async () => {
     refreshIdeas();
   }
 });
+themeOptions.forEach(option => {
+  option.addEventListener("click", async () => {
+    const selectedTheme = option.dataset.theme;
+    await applyTheme(selectedTheme);
+  });
+});
+const applyTheme = async (themeName) => {
+  document.documentElement.className = "";
+  if (themeName && themeName !== "eclipse")
+    document.documentElement.classList.add(themeName);
+  await themeService.setTheme(themeName);
+}
