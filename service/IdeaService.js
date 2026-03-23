@@ -34,6 +34,14 @@ export const update = async (idea) => {
     await chrome.storage.local.set({ [STORAGE_KEY]: ideas });
   }
 };
+export const toggleFavorite = async (idea) => {
+  const ideas = await getAll();
+  const index = ideas.findIndex((p) => p.id === idea.id);
+  if (index !== -1) {
+    ideas[index].isFavorite = !ideas[index].isFavorite;
+    await chrome.storage.local.set({ [STORAGE_KEY]: ideas });
+  }
+};
 export const remove = async (idea) => {
   const ideas = await getAll();
   const index = ideas.findIndex((p) => p.id === idea.id);

@@ -1,4 +1,3 @@
-//console.log("am inside content.js");
 let lastFocusedElement = null;
 document.addEventListener("focusin", (e) => {
   const element = e.target;
@@ -13,10 +12,8 @@ document.addEventListener("focusin", (e) => {
 chrome.runtime.onMessage.addListener((data, sender) => {
   if (data.action === "inject-idea") {
     if (!lastFocusedElement) {
-      //console.log("just select an input man ");
       return;
     }
-    //console.log("focused element :", lastFocusedElement);
     lastFocusedElement.focus();
     const success = document.execCommand("insertText", false, data.text);
     if (!success) {

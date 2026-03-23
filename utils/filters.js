@@ -8,6 +8,10 @@ export const search = (ideas, searchInput) => {
   });
 };
 export const favoriteFilter = (ideas) => {
-  console.log("am inside favoriteFilter");
   return ideas.filter(idea => idea.isFavorite);
+};
+export const sort = (ideas) => {
+  return ideas.sort((a, b) => {
+    return new Date(b.updatedAt) - new Date(a.updatedAt);
+  });
 };

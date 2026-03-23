@@ -124,7 +124,11 @@ nav {
   justify-content: center;
 }
 
-.settings button {
+.settings button,
+.github-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: none;
   border-radius: 50%;
@@ -135,13 +139,19 @@ nav {
   transition: var(--button-hover);
 }
 
-.settings button i {
+.github-button {
+  text-decoration: none;
+}
+
+.settings button i,
+.github-button i {
   color: var(--text);
   font-size: 1.2rem;
 }
 
 .settings button:hover,
-.theme-switcher-trigger:hover {
+.theme-switcher-trigger:hover,
+.github-button:hover {
   background-color: var(--bg-light);
 }
 
@@ -717,7 +727,8 @@ main {
 
 .edit-button,
 .delete-button,
-.favorite-button {
+.favorite-button,
+.copy-button {
   background-color: var(--bg-light);
   color: var(--text);
   border: none;
@@ -727,9 +738,21 @@ main {
   transition: var(--button-hover);
 }
 
+.copy-button-expanded {
+  min-width: 5.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
 .edit-button:hover,
 .delete-button:hover,
-.favorite-button:hover {
+.favorite-button:hover,
+.copy-button:hover {
   background-color: var(--text-muted);
   color: var(--bg);
 }

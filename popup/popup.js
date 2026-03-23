@@ -5,6 +5,7 @@ import { Idea } from "../model/Idea.js";
 import { renderIdeaList } from "../utils/renderers.js";
 import { validateIdea } from "../utils/validators.js";
 import * as searchUtils from "../utils/filters.js";
+import { copyToClipboard } from "../utils/helpers.js";
 
 // buttons
 const ToggleStatsButton = document.getElementById("toggle-stats");
@@ -99,6 +100,7 @@ const refreshIdeas = async () => {
   if (favoriteState) {
     list = searchUtils.favoriteFilter(list);
   }
+  list = searchUtils.sort(list);
   renderIdeaList(ideas, list, searchInput.value, favoriteState);
   if (stats.classList.contains("hidden")) {
     const ideaParagraphs = document.querySelectorAll(".paragraph");
@@ -179,6 +181,20 @@ cancelButtons.forEach((button) => {
 
 // card actions
 ideas.addEventListener("click", async (e) => {
+  const copyButton = e.target.closest(".copy-button");
+  if (copyButton) {
+    ideaState = await ideaService.getById(copyButton.id);
+    const isCopied = await copyToClipboard(ideaState.body);
+    if (isCopied) {
+      const originalHtml = copyButton.innerHTML;
+      copyButton.classList.add(".copy-button-expanded");
+      copyButton.innerHTML = "Copied !";
+      setTimeout(() => {
+        copyButton.classList.remove(".copy-button-expanded");
+        copyButton.innerHTML = originalHtml;
+      }, 2000);
+    }
+  }
   const editButton = e.target.closest(".edit-button");
   if (editButton) {
     ideaState = await ideaService.getById(editButton.id);
@@ -201,13 +217,11 @@ ideas.addEventListener("click", async (e) => {
   const favoriteButton = e.target.closest(".favorite-button");
   if (favoriteButton) {
     ideaState = await ideaService.getById(favoriteButton.id);
-    ideaState.isFavorite = !ideaState.isFavorite;
-    await ideaService.update(ideaState);
+    await ideaService.toggleFavorite(ideaState);
     refreshIdeas();
   }
   const useButton = e.target.closest(".use-button");
   if (useButton) {
-    //console.log("use button id : ", useButton.id);
     ideaState = await ideaService.getById(useButton.id);
     const [tab] = await chrome.tabs.query({
       active: true,
@@ -279,7 +293,8 @@ searchInput.addEventListener("input", async () => {
   if (favoriteState) {
     allIdeas = searchUtils.favoriteFilter(allIdeas);
   }
-  const filteredIdeas = searchUtils.search(allIdeas, searchInputValue);
+  let filteredIdeas = searchUtils.search(allIdeas, searchInputValue);
+  filteredIdeas = searchUtils.sort(filteredIdeas);
   renderIdeaList(ideas, filteredIdeas, searchInputValue, favoriteState);
   if (stats.classList.contains("hidden")) {
     const ideaParagraphs = document.querySelectorAll(".paragraph");
@@ -307,7 +322,6 @@ importInput.addEventListener("change", async (e) => {
   const dataFile = e.target.files[0];
   if (!dataFile) return
   const response = await backupService.importDatabase(dataFile);
-  console.log(response);
   if (response) {
     refreshIdeas();
     showInfoModal("Import successful", "Your ideas have been imported successfully.", "done");

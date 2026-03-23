@@ -16,6 +16,9 @@ const renderIdea = (idea, searchInput = "") => {
     <div class="card-buttons">
       <button type="button" class="use-button" id="${idea.id}">Use</button>
       <div class="card-actions">
+        <button type="button" class="copy-button" id="${idea.id}">
+          <i class="fa-solid fa-copy"></i>
+        </button>
         <button type="button" class="edit-button" id="${idea.id}">
           <i class="fa-solid fa-pen"></i>
         </button>

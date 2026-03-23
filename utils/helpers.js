@@ -10,3 +10,11 @@ export const calculatePassedTime = (updatedAt) => {
   const gapInDays = Math.floor(gapInHours / 24);
   return `${gapInDays} d`;
 };
+export const copyToClipboard = async (text) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (err) {
+    return false;
+  }
+};
