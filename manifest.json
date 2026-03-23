@@ -1,21 +1,29 @@
 {
   "name": "IdeaJar",
-  "description": "IdeaJar is a simple browser extension for collecting and organizing your AI ideas. Save useful prompts, snippets, and instructions while you browse, and keep them ready for whenever you need them.",
-  "version": "1.0",
+  "description": "A sleek and fast vault for your prompts, snippets, and notes. Capture text directly from any webpage and instantly inject your best ideas back into them.",
+  "version": "1.0.0",
   "manifest_version": 3,
   "background": {
     "service_worker": "background/background.js",
     "type": "module"
   },
-  "permissions": ["storage", "contextMenus"],
+  "permissions": [
+    "storage",
+    "contextMenus"
+  ],
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": "assets/icons/logo128.png"
   },
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["content/content.js"]
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content/content.js"
+      ]
     }
   ],
   "icons": {
