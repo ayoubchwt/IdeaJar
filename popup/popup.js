@@ -45,6 +45,9 @@ const addFrom = document.getElementById("add-form");
 const editForm = document.getElementById("edit-form");
 const confirmModal = document.getElementById("confirm-modal");
 const infoModal = document.getElementById("info-modal");
+const ideaNumberOutput = document.getElementById("idea-number-output");
+const favoriteNumberOutput = document.getElementById("favorite-number-output");
+const exportStatusOuput = document.getElementById("export-status-ouput");
 // pages
 const homePage = document.getElementById("home-page");
 const addPage = document.getElementById("add-page");
@@ -83,10 +86,11 @@ const saveToggleStatus = () => {
   const isHidden = stats.classList.contains("hidden");
   localStorage.setItem("IdeaJar_Stats_Hidden", isHidden);
 };
-// validators (later on)
-const validateInputs = () => { };
 // refreshing ideas
 const refreshIdeas = async () => {
+  ideaNumberOutput.innerText = await ideaService.getIdeasNumber();
+  favoriteNumberOutput.innerText = await ideaService.getFavoriteIdeasNumber();
+  exportStatusOuput.innerHTML = await backupService.getExportDate();
   const allIdeas = await ideaService.getAll();
   let list = searchUtils.search(allIdeas, searchInput.value);
   if (favoriteState) {
@@ -175,7 +179,7 @@ ideas.addEventListener("click", async (e) => {
     ideaState = await ideaService.getById(editButton.id);
     editFormTitle.value = ideaState.title;
     editFormBody.value = ideaState.body;
-    editFormFavorite.checked = ideaState.isFavourite;
+    editFormFavorite.checked = ideaState.isFavorite;
     navigateToEdit();
   }
   const deleteButton = e.target.closest(".delete-button");
@@ -245,7 +249,7 @@ saveButton.addEventListener("click", async (e) => {
   if (errors.isValid) {
     ideaState.title = title;
     ideaState.body = body;
-    ideaState.isFavourite = editFormFavorite.checked;
+    ideaState.isFavorite = editFormFavorite.checked;
 
     const confirmed = await showConfirmModal(
       "Are you sure you want to update this idea?",
@@ -289,6 +293,7 @@ favoriteOption.addEventListener("click", () => {
 });
 exportOption.addEventListener("click", async () => {
   await backupService.exportDatabase();
+  exportStatusOuput.innerText = await backupService.getExportDate();
 });
 importOption.addEventListener("click", async () => {
   importInput.click();
@@ -312,6 +317,7 @@ cleanOption.addEventListener("click", async () => {
   );
   if (confirmed) {
     await ideaService.removeAll();
+    await backupService.cleanMetadata();
     refreshIdeas();
   }
 });

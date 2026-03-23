@@ -3,6 +3,14 @@ export const getAll = async () => {
   const result = await chrome.storage.local.get(STORAGE_KEY);
   return result[STORAGE_KEY] || [];
 };
+export const getIdeasNumber = async () => {
+  const ideas = await getAll();
+  return ideas.length;
+}
+export const getFavoriteIdeasNumber = async () => {
+  const ideas = await getAll();
+  return ideas.filter(idea => idea.isFavorite).length;
+}
 export const getById = async (id) => {
   const ideas = await getAll();
   const idea = ideas.find((idea) => idea.id === id);

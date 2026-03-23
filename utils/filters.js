@@ -9,5 +9,5 @@ export const search = (ideas, searchInput) => {
 };
 export const favoriteFilter = (ideas) => {
   console.log("am inside favoriteFilter");
-  return ideas.filter(idea => idea.isFavorite === true);
+  return ideas.filter(idea => idea.isFavorite);
 };
