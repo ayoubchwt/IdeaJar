@@ -36,6 +36,7 @@ chrome.runtime.onMessage.addListener(async (messge) => {
   }
   if (messge.type === "IMPORT_COMPLETE") {
     chrome.tabs.remove(importTabId, () => {
+      if (chrome.runtime.lastError) { }
       importTabId = null;
     });
     await setImportResult(messge.success);
