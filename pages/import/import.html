@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import data - IdeaJar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./import.css" />
+</head>
+
+<body>
+    <section class="import-container">
+        <img src="../../assets/icons/logo128.png" alt="IdeaJar logo">
+        <div class="info">
+            <h1>Restore Your Ideas</h1>
+            <p>Select a .json backup file to bring back your saved ideas. This will merge the imported ideas with your
+                existing ones.</p>
+        </div>
+        <input class="import-input" id="import-input" type="file" accept=".json">
+        <button class="import-button" id="import-button">Import</button>
+    </section>
+    <script src="./import.js" type="module"></script>
+</body>
+
+</html>

@@ -10,6 +10,7 @@ export const applyInitialLayout = async () => {
     if (isHidden) {
         stats.classList.add("hidden");
         homePage.classList.add("home-page-expanded");
+        ideas.classList.add("ideas-expanded");
     }
 }
 

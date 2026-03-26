@@ -3,6 +3,7 @@ import { initializeThemes, applyTheme } from "./ui/themes.js";
 import { initializeLayout, applyInitialLayout } from "./ui/layout.js";
 import { initializeList, refreshIdeas } from "./ui/list.js";
 import { initializeForms } from "./ui/forms.js";
+import { initializeBackups } from "./ui/backup.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   // theme setup
@@ -13,6 +14,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // stats layout / ideas layout
   await applyInitialLayout();
   initializeLayout();
+
+  // backup suff 
+  initializeBackups();
 
   // list (search filter clicks ext)
   initializeList();

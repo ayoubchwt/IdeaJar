@@ -6,5 +6,5 @@ export const setStatsHidden = async (statsHidden) => {
 
 export const getStatsHidden = async () => {
     const result = await chrome.storage.local.get(STORAGE_KEY);
-    return result[STORAGE_KEY] || true;
+    return result[STORAGE_KEY];
 };

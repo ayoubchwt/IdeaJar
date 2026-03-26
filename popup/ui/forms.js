@@ -3,6 +3,7 @@ import { navigateToHome } from "./routers.js"
 import * as ideaService from "../../service/IdeaService.js"
 import { validateIdea } from "../../utils/validators.js";
 import { refreshIdeas } from "./list.js";
+import { showConfirmModal, showInfoModal } from "./modals.js";
 const addFrom = document.getElementById("add-form");
 const editForm = document.getElementById("edit-form");
 
