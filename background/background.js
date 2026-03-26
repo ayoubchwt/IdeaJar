@@ -1,4 +1,5 @@
 import * as ideaService from "../service/IdeaService.js";
+import { setImportResult } from "../service/backupService.js";
 import { Idea } from "../model/Idea.js";
 
 let importTabId = null;
@@ -25,7 +26,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     await ideaService.add(idea);
   }
 });
-chrome.runtime.onMessage.addListener((messge) => {
+chrome.runtime.onMessage.addListener(async (messge) => {
   if (messge.type === "OPEN_IMPORT_WINDOW") {
     chrome.tabs.create({
       url: chrome.runtime.getURL('pages/import/import.html')
@@ -37,9 +38,6 @@ chrome.runtime.onMessage.addListener((messge) => {
     chrome.tabs.remove(importTabId, () => {
       importTabId = null;
     });
-    chrome.runtime.sendMessage({
-      type: "IMPORT_RESULT",
-      success: messge.success
-    })
+    await setImportResult(messge.success);
   }
 });

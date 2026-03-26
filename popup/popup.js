@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initializeLayout();
 
   // backup suff 
-  initializeBackups();
+  await initializeBackups();
 
   // list (search filter clicks ext)
   initializeList();

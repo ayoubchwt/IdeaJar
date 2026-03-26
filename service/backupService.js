@@ -1,6 +1,6 @@
 import * as ideaService from "./IdeaService.js"
 
-const STORAGE_KEY = "Idea_Jar_metadata";
+const STORAGE_KEY = "Idea_Jar_Last_backup";
 
 export const exportDatabase = async () => {
     const ideas = await ideaService.getAll();
@@ -42,3 +42,11 @@ export const importDatabase = async (file) => {
         return false;
     }
 };
+export const setImportResult = async (result) => {
+    await chrome.storage.local.set({ "Import_Result": result });
+}
+export const getImportResult = async () => {
+    const result = await chrome.storage.local.get("Import_Result");
+    chrome.storage.local.remove("Import_Result");
+    return result["Import_Result"];
+}

@@ -8,18 +8,16 @@ const exportOption = document.getElementById("export-option");
 const cleanOption = document.getElementById("clean-option");
 const exportStatusOuput = document.getElementById("export-status-ouput");
 
-export const initializeBackups = () => {
-    chrome.runtime.onMessage.addListener(async (message) => {
-        if (message.type === "IMPORT_RESULT") {
-            if (message.success) {
-                await refreshIdeas();
-                showInfoModal("Import successful", "Your ideas have been imported successfully.", "done");
-            }
-            else {
-                showInfoModal("Import failed", "We couldn't import your file. Please make sure it's a valid backup.", "Try Again");
-            }
+export const initializeBackups = async () => {
+    const result = await backupService.getImportResult();
+    if (result !== undefined) {
+        if (result) {
+            showInfoModal("Import successful", "Your ideas have been imported successfully.", "done");
         }
-    })
+        else {
+            showInfoModal("Import failed", "We couldn't import your file. Please make sure it's a valid backup.", "Try Again");
+        }
+    }
     exportOption.addEventListener("click", async () => {
         await backupService.exportDatabase();
         exportStatusOuput.innerText = await backupService.getExportDate();
