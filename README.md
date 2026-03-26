@@ -44,18 +44,21 @@ git checkout firefox
 
 <table>
   <tr>
-    <td align="center">
-        <img width="300" alt="" src="./assets/demo/context.gif" />
-    </td>
-    <td align="center">
-        <img width="300" alt="" src="./assets/demo/inject.gif" />
-    </td>
-    <td align="center">
-        <img width="300" alt="" src="./assets/demo/backup.gif" /> 
-    </td>
         <td align="center">
-        <img width="300" alt="" src="./assets/demo/themes.gif" /> 
-    </td>
+            <img width="300" alt="" src="./assets/demo/context.gif" />
+        </td>
+        <td align="center">
+            <img width="300" alt="" src="./assets/demo/inject.gif" />
+        </td>
+    </tr>
+  <tr>
+        <td align="center">
+            <img width="300" alt="" src="./assets/demo/backup.gif" /> 
+        </td>
+            <td align="center">
+            <img width="300" alt="" src="./assets/demo/themes.gif" /> 
+        </td>
+    </tr>
 </table>
 
 ##  Features
