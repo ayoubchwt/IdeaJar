@@ -10,6 +10,7 @@ const exportStatusOuput = document.getElementById("export-status-ouput");
 
 export const initializeBackups = async () => {
     const result = await backupService.getImportResult();
+    exportStatusOuput.innerText = await backupService.getExportDate();
     if (result !== undefined) {
         if (result) {
             showInfoModal("Import successful", "Your ideas have been imported successfully.", "done");
