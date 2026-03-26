@@ -40,7 +40,7 @@ git checkout firefox
 4. Click **Load Temporary Add-on**
 5. Navigate to the cloned folder and select the `manifest.json` file
 
-## Usage
+## Demos
 
 <table>
   <tr>
