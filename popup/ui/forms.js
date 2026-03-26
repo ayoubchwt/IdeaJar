@@ -28,10 +28,7 @@ const cancelButtons = document.querySelectorAll(".cancel-button");
 let ideaState = null;
 
 export const setIdea = (idea) => {
-    ideaState.title = idea.title;
-    ideaState.body = idea.body;
-    ideaState.isFavorite = idea.isFavorite;
-
+    ideaState = idea;
     editFormTitle.value = idea.title;
     editFormBody.value = idea.body;
     editFormFavorite.checked = idea.isFavorite
