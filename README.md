@@ -10,7 +10,7 @@ IdeaJar is a sleek, fast vault for your text snippets, email templates, and AI p
 The easiest way to use IdeaJar is to install it from the official stores:
 
 * [**Chrome Web Store**](link) (still under review)
-* [**Firefox Add-ons**](link) (still under review)
+* [**Firefox Add-ons**]([link](https://addons.mozilla.org/en-US/firefox/addon/ideajar/) (still under review)
 
     
 ### 2. For Developers (Run Locally)
@@ -45,18 +45,18 @@ git checkout firefox
 <table>
   <tr>
         <td align="center">
-            <img width="300" alt="" src="./assets/demo/context.gif" />
+            <img width="350" alt="" src="./assets/demo/context.gif" />
         </td>
         <td align="center">
-            <img width="300" alt="" src="./assets/demo/inject.gif" />
+            <img width="350" alt="" src="./assets/demo/inject.gif" />
         </td>
     </tr>
   <tr>
         <td align="center">
-            <img width="300" alt="" src="./assets/demo/backup.gif" /> 
+            <img width="350" alt="" src="./assets/demo/backup.gif" /> 
         </td>
             <td align="center">
-            <img width="300" alt="" src="./assets/demo/themes.gif" /> 
+            <img width="350" alt="" src="./assets/demo/themes.gif" /> 
         </td>
     </tr>
 </table>
