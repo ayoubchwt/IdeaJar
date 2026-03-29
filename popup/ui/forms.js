@@ -1,4 +1,4 @@
-import { Idea } from "../../model/Idea.js";
+import { Idea } from "../../model/idea.js";
 import { navigateToHome } from "./routers.js"
 import * as ideaService from "../../service/IdeaService.js"
 import { validateIdea } from "../../utils/validators.js";

@@ -1,7 +1,7 @@
 {
   "name": "IdeaJar",
   "description": "A sleek and fast vault for your prompts, snippets, and notes. Capture text directly from any webpage and instantly inject your best ideas back into them.",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "manifest_version": 3,
   "browser_specific_settings": {
     "gecko": {

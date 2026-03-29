@@ -1,6 +1,6 @@
 import * as ideaService from "../service/IdeaService.js";
 import { setImportResult } from "../service/backupService.js";
-import { Idea } from "../model/Idea.js";
+import { Idea } from "../model/idea.js";
 
 let importTabId = null;
 
