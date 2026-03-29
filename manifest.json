@@ -44,5 +44,8 @@
     "32": "assets/icons/logo32.png",
     "48": "assets/icons/logo48.png",
     "128": "assets/icons/logo128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; style-src 'self'; font-src 'self'"
   }
 }
