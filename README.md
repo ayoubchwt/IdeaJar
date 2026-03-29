@@ -10,7 +10,7 @@ IdeaJar is a sleek, fast vault for your text snippets, email templates, and AI p
 The easiest way to use IdeaJar is to install it from the official stores:
 
 * [**Chrome Web Store**](link) (still under review)
-* [**Firefox Add-ons**]([link](https://addons.mozilla.org/en-US/firefox/addon/ideajar/)
+* [**Firefox Add-ons**] [link](https://addons.mozilla.org/en-US/firefox/addon/ideajar/)
 
     
 ### 2. For Developers (Run Locally)
